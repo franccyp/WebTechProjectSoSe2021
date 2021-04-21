@@ -1,4 +1,4 @@
-# WebTechProjectSoSe2021
+# ShopChop
 
 Projektbeschreibung:
 
