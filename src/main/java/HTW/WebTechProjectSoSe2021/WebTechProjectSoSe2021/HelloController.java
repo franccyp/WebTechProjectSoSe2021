@@ -10,6 +10,13 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() {
+
+        return "Hello World!";
+    }
+
+    @RequestMapping("/hello")
+    public String landingPage() {
+
         return "Hello World from Franccy and Kris!";
     }
 
