@@ -6,9 +6,10 @@ import java.util.List;
 public class ShoppingList {
 
     private long id;
-    private final String listName;
+    private String listName;
     private final String author;
     private final List<String> listItems = new ArrayList<String>();
+
 
     public ShoppingList(String listName, String author) {
         this.listName = listName;
@@ -22,7 +23,7 @@ public class ShoppingList {
     }
 
     public void setListName(String name) {
-        this.listname = listName;
+        this.listName = listName;
     }
 
     //gets all the Items from the list
