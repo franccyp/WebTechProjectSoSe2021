@@ -1,8 +1,10 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -14,11 +16,22 @@ public class HelloController {
         return "Hello World!";
     }
 
-    @RequestMapping("/hello")
-    public String landingPage() {
+    @Autowired
+    private ShoppingListService shoppingListService;
 
-        return "Hello World from Franccy and Kris!";
+    @GetMapping("/shoppinglists")
+    public List<ShoppingList> allShoppingLists() {
+
+        return ShoppingListService.allShoppingLists();
     }
 
+    @PostMapping("/addList/{listname}/{author}")
+    public void createList(
+            @PathVariable("listname") String listname,
+            @PathVariable("author") String author
+    ) {
+
+        ShoppingListService.createList(listname, author);
+    }
 }
 

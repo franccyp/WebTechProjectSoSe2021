@@ -1,6 +1,8 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
-@Entity
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShoppingList {
 
     private long id;
@@ -20,7 +22,7 @@ public class ShoppingList {
     }
 
     public void setListName(String name) {
-        this.name = listName;
+        this.listname = listName;
     }
 
     //gets all the Items from the list
