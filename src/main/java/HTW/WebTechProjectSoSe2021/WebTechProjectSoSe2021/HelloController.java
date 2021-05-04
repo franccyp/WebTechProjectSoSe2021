@@ -25,13 +25,13 @@ public class HelloController {
         return ShoppingListService.allShoppingLists();
     }
 
-    @PostMapping("/addList/{listname}/{author}")
-    public void createList(
+    @PostMapping("/addlist/{listname}/{author}")
+    public String createList(
             @PathVariable("listname") String listname,
             @PathVariable("author") String author
     ) {
-
         ShoppingListService.createList(listname, author);
+        return "Die Liste " + listname + " von " + author + " wurde hinzugefügt!"
     }
 }
 
