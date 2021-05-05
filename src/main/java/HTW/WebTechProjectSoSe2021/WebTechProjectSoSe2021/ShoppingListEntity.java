@@ -1,17 +1,24 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingList {
+@Entity
+public class ShoppingListEntity {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String listName;
-    private final String author;
+    private String author;
+    @ElementCollection
     private final List<String> listItems = new ArrayList<String>();
 
 
-    public ShoppingList(String listName, String author) {
+    public ShoppingListEntity(){}
+
+    public ShoppingListEntity(String listName, String author) {
         this.listName = listName;
         this.author = author;
 
@@ -42,12 +49,16 @@ public class ShoppingList {
     }
 
     //Getter for the id. It is not possible to set a new id for the list after its constructed.
-    public long getId() {
+    public Long getId() {
         return id;
     }
+
+    public void setId(Long id){}
 
     //Getter for the author. It is not possible to set a new author for the list after its constructed.
     public String getAuthor() {
         return author;
     }
+
+    public void setAuthor(String author){ this.author = author;}
 }

@@ -1,7 +1,10 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
-//@Repository
-//public interface ShoppingListRepository extends CrudRepository<ShoppingList, Long> {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ShoppingListRepository extends CrudRepository<ShoppingListEntity, Long> {
 
 
-//}
+}

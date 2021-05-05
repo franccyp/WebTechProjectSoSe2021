@@ -1,6 +1,5 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +7,7 @@ import java.util.List;
 
 
 @RestController
-public class HelloController {
+public class ShoppingListController {
 
     @RequestMapping("/")
     public String index() {
@@ -20,7 +19,7 @@ public class HelloController {
     private ShoppingListService shoppingListService;
 
     @GetMapping("/shoppinglists")
-    public List<ShoppingList> allShoppingLists() {
+    public List<ShoppingListEntity> allShoppingLists() {
 
         return ShoppingListService.allShoppingLists();
     }

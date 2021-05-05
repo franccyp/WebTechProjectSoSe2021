@@ -10,11 +10,12 @@ import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-public class WebTechProjectSoSe2021Application {
+public class ShopChopApp {
 
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebTechProjectSoSe2021Application.class, args);
+
+		SpringApplication.run(ShopChopApp.class, args);
 	}
 
 	@Bean
