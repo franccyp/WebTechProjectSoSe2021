@@ -1,2 +1,2 @@
-HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/WebTechProjectSoSe2021ApplicationTests.java
- HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.WebTechProjectSoSe2021ApplicationTests
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/ShopChopAppTests.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.ShopChopAppTests
