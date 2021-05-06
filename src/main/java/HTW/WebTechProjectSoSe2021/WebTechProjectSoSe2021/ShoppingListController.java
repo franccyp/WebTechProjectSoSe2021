@@ -28,8 +28,8 @@ public class ShoppingListController {
 
     @PostMapping("/add-list")
     public String addListPage(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
-        ShoppingListService.saveList(shoppingList);
-        //model.addAttribute("shoppingList", shoppingList);
+        model.addAttribute("shoppingList", shoppingList);
+        shoppingListService.saveList(shoppingList);
         return "list-added";
     }
 
