@@ -2,13 +2,15 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class ShoppingListService {
 
-    private static final List<ShoppingListEntity> SHOPPING_LIST_ENTITIES = new ArrayList<ShoppingListEntity>();
+    @OneToMany
+    private final List<ShoppingListEntity> SHOPPING_LIST_ENTITIES = new ArrayList<ShoppingListEntity>();
 
     public ShoppingListService() {
     }

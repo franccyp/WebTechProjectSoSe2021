@@ -24,10 +24,11 @@ public class ShoppingListController {
         return ShoppingListService.allShoppingLists();
     }
 
-    @GetMapping("/addlist/{listname}/{author}")
+    @PostMapping("/addlist?listname?author")
     public String createList(
             @PathVariable("listname") String listname,
             @PathVariable("author") String author
+            //@PathVariable("listitems") List<String>
     ) {
         ShoppingListService.createList(listname, author);
         String s = "Die Liste " + listname + " von " + author + " wurde hinzugefügt!";
