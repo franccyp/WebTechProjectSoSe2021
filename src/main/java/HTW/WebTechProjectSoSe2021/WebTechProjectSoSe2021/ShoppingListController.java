@@ -2,10 +2,7 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -26,7 +23,7 @@ public class ShoppingListController {
 //        return ShoppingListService.allShoppingLists();
 //    }
 
-    @PostMapping("/add-list")
+    @GetMapping("/add-list")
     public String addListPage(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
         model.addAttribute("shoppingList", shoppingList);
         shoppingListService.saveList(shoppingList);
@@ -35,7 +32,6 @@ public class ShoppingListController {
 
     @PostMapping("/list-added")
     public String addListPage(Model model) {
-
         return "List added!";
     }
 }

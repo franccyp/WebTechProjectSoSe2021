@@ -11,7 +11,6 @@ public class ShoppingListService {
         this.repository = repository;
     }
 
-
     //saves list to DB
     public void saveList(ShoppingListEntity shoppinglist) {
         repository.save(shoppinglist);
