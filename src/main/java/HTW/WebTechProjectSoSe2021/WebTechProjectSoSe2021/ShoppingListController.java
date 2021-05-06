@@ -1,9 +1,11 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -18,21 +20,23 @@ public class ShoppingListController {
     @Autowired
     private ShoppingListService shoppingListService;
 
-    @GetMapping("/shoppinglists")
-    public List<ShoppingListEntity> allShoppingLists() {
+//    @GetMapping("/shoppinglists")
+//    public List<ShoppingListEntity> allShoppingLists() {
+//
+//        return ShoppingListService.allShoppingLists();
+//    }
 
-        return ShoppingListService.allShoppingLists();
+    @PostMapping("/add-list")
+    public String addListPage(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
+        ShoppingListService.saveList(shoppingList);
+        //model.addAttribute("shoppingList", shoppingList);
+        return "list-added";
     }
 
-    @PostMapping("/addlist?listname?author")
-    public String createList(
-            @PathVariable("listname") String listname,
-            @PathVariable("author") String author
-            //@PathVariable("listitems") List<String>
-    ) {
-        ShoppingListService.createList(listname, author);
-        String s = "Die Liste " + listname + " von " + author + " wurde hinzugefügt!";
-        return s;
+    @PostMapping("/list-added")
+    public String addListPage(Model model) {
+
+        return "List added!";
     }
 }
 

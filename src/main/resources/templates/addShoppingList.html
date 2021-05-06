@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new Shopping List!</title>
+</head>
+<body>
+<form action="#" th:action="@{/add-list}" th:object="${shoppingList}" method="post">
+    <br>
+    <h3>List name:</h3>
+    <input>type="text" th:field=*{listname}"</input>
+    <br>
+    <h3>List author:</h3>
+    <input>type="text" th:field=*{author}"</input>
+    <br>
+    <input type="submit" value="submit"/>
+</form>
+</body>
+</html>
