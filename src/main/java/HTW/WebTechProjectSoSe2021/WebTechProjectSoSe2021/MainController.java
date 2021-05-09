@@ -5,13 +5,10 @@ import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ShoppingListN
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -20,32 +17,22 @@ public class MainController {
     @Autowired
     private ShoppingListService shoppingListService;
 
-//    //Codes for UserEntity
-//    @Autowired
-//    private UserService userService;
-//
-//    @GetMapping("/users")
-//    public List<UserEntity> allUsers() {
-//
-//        return userService.findAll();
-//    }
-//
-//    @GetMapping("/users/count")
-//    public Long count() {
-//
-//        return userService.count();
-//    }
-//
-//    @DeleteMapping("/users/{id}")
-//    public void delete(@PathVariable String id) {
-//
-//        Long userId = Long.parseLong(id);
-//        userService.deleteById(userId);
-//    }
 
     @RequestMapping("/")
-    public String index(){
+    public String index() {
         return "welcome to ShopChop!";
+    }
+
+    //create a shopping list through a userform (ergibt ein Fehler zurzeit)
+//    @PostMapping("/add-list")
+//    public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model){
+//        shoppingListService.saveList(shoppingList);
+//        model.addAttribute("shoppingList", shoppingList);
+//        return "listadded";
+//    }
+    @PostMapping(value = "/shoppinglist")
+    public ShoppingListEntity createShoppingList(@RequestBody ShoppingListEntity shoppingList) {
+        return shoppingListService.saveList(shoppingList);
     }
 
     //list out all shopping lists in db
@@ -64,11 +51,6 @@ public class MainController {
         return ResponseEntity.ok().body(shoppingList);
     }
 
-    //create a shopping list
-    @PostMapping("/createshoppinglists")
-    public ShoppingListEntity createShoppingList(@RequestBody ShoppingListEntity shoppingList){
-        return shoppingListService.saveList(shoppingList);
-    }
 
     //update a particular shopping list (its details) with the input id
     @PutMapping("/shoppinglists/{id}")
@@ -93,11 +75,6 @@ public class MainController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/add-list")
-    public String addListPage(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
-        model.addAttribute("shoppingList", shoppingList);
-        shoppingListService.saveList(shoppingList);
-        return "list-added";
-    }
+
 }
 

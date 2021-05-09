@@ -48,23 +48,9 @@ public class ShoppingListEntity {
     }
 
     //we dont need this???
-    public void setAuthor(String name){ this.author = name;};
-
-
-    //gets all the Items from the list
-//    public List<String> getListItems() {
-//        return listItems;
-//    }
-
-    //adds an item to the list
-//    public void addListItem(String listItem) {
-//        listItems.add(listItem);
-//    }
-
-    //removes an item from the list
-//    public void removeListItem(String listItem) {
-//        listItems.remove(listItem);
-//    }
+    public void setAuthor(String name) {
+        this.author = name;
+    }
 
 
     @Override
