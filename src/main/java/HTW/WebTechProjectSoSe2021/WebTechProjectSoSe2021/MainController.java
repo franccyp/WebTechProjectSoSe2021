@@ -5,6 +5,7 @@ import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ShoppingListN
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,16 +25,16 @@ public class MainController {
     }
 
     //create a shopping list through a userform (ergibt ein Fehler zurzeit)
-//    @PostMapping("/add-list")
-//    public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model){
-//        shoppingListService.saveList(shoppingList);
-//        model.addAttribute("shoppingList", shoppingList);
-//        return "listadded";
-//    }
-    @PostMapping(value = "/shoppinglist")
-    public ShoppingListEntity createShoppingList(@RequestBody ShoppingListEntity shoppingList) {
-        return shoppingListService.saveList(shoppingList);
+    @PostMapping("/add-list")
+    public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
+        shoppingListService.saveList(shoppingList);
+        model.addAttribute("shoppingList", shoppingList);
+        return "listadded";
     }
+//    @PostMapping(value = "/savelist")
+//    public ShoppingListEntity createShoppingList(@RequestBody ShoppingListEntity shoppingList) {
+//        return shoppingListService.saveList(shoppingList);
+//    }
 
     //list out all shopping lists in db
     @GetMapping("/shoppinglists")
