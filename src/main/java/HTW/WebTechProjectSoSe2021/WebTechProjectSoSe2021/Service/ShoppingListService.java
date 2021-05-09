@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShoppingListService {
@@ -20,10 +21,17 @@ public class ShoppingListService {
     }
 
     //saves list to DB
-    public void saveList(ShoppingListEntity shoppinglist) {
+    public ShoppingListEntity saveList(ShoppingListEntity shoppinglist) {
 
-        shopRepository.save(shoppinglist);
+        return shopRepository.save(shoppinglist);
+
     }
+
+    //find one shopping list by its id
+    public Optional<ShoppingListEntity> findById(Long shoppingListId) {
+        return shopRepository.findById(shoppingListId);
+    }
+
 
     //find all shopping lists
     public List<ShoppingListEntity> findAll() {
@@ -36,6 +44,8 @@ public class ShoppingListService {
         return sList;
     }
 
+
+
     //determine the total number of shopping lists available
     public Long count() {
 
@@ -47,4 +57,5 @@ public class ShoppingListService {
 
         shopRepository.deleteById(shopId);
     }
+
 }

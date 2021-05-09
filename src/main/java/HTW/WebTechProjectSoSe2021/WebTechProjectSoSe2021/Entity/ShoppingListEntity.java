@@ -4,13 +4,17 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ShoppingList")
+@Table(name = "shopping_list")
 public class ShoppingListEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(name = "list_name", nullable = false)
     private String listName;
+    
+    @Column(name = "author", nullable = false)
     private String author;
 //    @ElementCollection
 //    private final List<String> listItems = new ArrayList<String>();
@@ -42,6 +46,9 @@ public class ShoppingListEntity {
     public String getAuthor() {
         return author;
     }
+
+    //we dont need this???
+    public void setAuthor(String name){ this.author = name;};
 
 
     //gets all the Items from the list
