@@ -4,6 +4,7 @@ import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEnti
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ShoppingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.Optional;
 public class ShoppingListService {
 
     @Autowired
-    private ShoppingListRepository shopRepository;
+    private final ShoppingListRepository shopRepository;
+    private RestTemplate restTemplate;
 
     public ShoppingListService(ShoppingListRepository repository) {
 
@@ -22,6 +24,7 @@ public class ShoppingListService {
 
     //saves list to DB
     public ShoppingListEntity saveList(ShoppingListEntity shoppinglist) {
+
 
         return shopRepository.save(shoppinglist);
 

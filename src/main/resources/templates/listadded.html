@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Add a new Shopping List!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <h3>List was added!</h3>
-<p th:text="'name: '+${shoppinglist.listname}"></p>
-<p th:text="'author: '+${shoppinglist.author}"></p>
+<p th:text="'name: ' + ${shoppingList.listName}"></p>
+<p th:text="'author: ' + ${shoppingList.author}"></p>
 </body>
 </html>

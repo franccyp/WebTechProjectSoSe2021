@@ -16,16 +16,18 @@ public class ShoppingListEntity {
     
     @Column(name = "author", nullable = false)
     private String author;
+
+
 //    @ElementCollection
 //    private final List<String> listItems = new ArrayList<String>();
 
 
-    public ShoppingListEntity(){}
-
     public ShoppingListEntity(String listName, String author) {
         this.listName = listName;
         this.author = author;
+    }
 
+    public ShoppingListEntity() {
     }
 
     //Getter for the id. It is not possible to set a new id for the list after its constructed.

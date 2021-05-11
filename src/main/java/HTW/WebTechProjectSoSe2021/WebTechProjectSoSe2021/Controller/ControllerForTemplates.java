@@ -1,19 +1,21 @@
-package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021;
+package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ShoppingListNotFoundException;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-@RestController
-public class MainController {
+@Controller
+public class ControllerForTemplates {
 
     @Autowired
     private ShoppingListService shoppingListService;
@@ -24,17 +26,19 @@ public class MainController {
         return "welcome to ShopChop!";
     }
 
+    @GetMapping("/createlist")
+    public String createShoppingListForm(Model model) {
+        model.addAttribute("shoppingList", new ShoppingListEntity());
+        return "createlist";
+    }
+
     //create a shopping list through a userform (ergibt ein Fehler zurzeit)
-    @PostMapping("/add-list")
+    @PostMapping("/createlist")
     public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
         shoppingListService.saveList(shoppingList);
         model.addAttribute("shoppingList", shoppingList);
         return "listadded";
     }
-//    @PostMapping(value = "/savelist")
-//    public ShoppingListEntity createShoppingList(@RequestBody ShoppingListEntity shoppingList) {
-//        return shoppingListService.saveList(shoppingList);
-//    }
 
     //list out all shopping lists in db
     @GetMapping("/shoppinglists")
@@ -70,12 +74,23 @@ public class MainController {
     @DeleteMapping("/shoppinglists/remove/{id}")
     public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ShoppingListNotFoundException {
         ShoppingListEntity existingShoppingList = this.shoppingListService.findById(shoppingListId)
-                .orElseThrow(()-> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
+                .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
 
         this.shoppingListService.deleteById(shoppingListId);
         return ResponseEntity.ok().build();
     }
 
+
+    @GetMapping("/getTestLists")
+    public List<ShoppingListEntity> getTestListeDetails() {
+        List<ShoppingListEntity> shoppingList = new ArrayList<ShoppingListEntity>() {{
+            add(new ShoppingListEntity("name1", "author1"));
+            add(new ShoppingListEntity("name1", "author1"));
+            add(new ShoppingListEntity("name1", "author1"));
+        }};
+        System.out.println((shoppingList));
+        return shoppingList;
+    }
 
 }
 
