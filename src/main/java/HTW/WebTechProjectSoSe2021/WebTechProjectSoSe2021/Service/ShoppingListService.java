@@ -25,7 +25,6 @@ public class ShoppingListService {
     //saves list to DB
     public ShoppingListEntity saveList(ShoppingListEntity shoppinglist) {
 
-
         return shopRepository.save(shoppinglist);
 
     }
@@ -34,7 +33,6 @@ public class ShoppingListService {
     public Optional<ShoppingListEntity> findById(Long shoppingListId) {
         return shopRepository.findById(shoppingListId);
     }
-
 
     //find all shopping lists
     public List<ShoppingListEntity> findAll() {
@@ -47,8 +45,6 @@ public class ShoppingListService {
         return sList;
     }
 
-
-
     //determine the total number of shopping lists available
     public Long count() {
 
@@ -60,5 +56,4 @@ public class ShoppingListService {
 
         shopRepository.deleteById(shopId);
     }
-
 }

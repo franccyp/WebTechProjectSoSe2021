@@ -17,7 +17,6 @@ public class ControllerForRest {
     @Autowired
     private ShoppingListService shoppingListService;
 
-
     @RequestMapping("/")
     public String index() {
         return "welcome to ShopChop!";
@@ -38,7 +37,6 @@ public class ControllerForRest {
                 .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
         return ResponseEntity.ok().body(shoppingList);
     }
-
 
     //update a particular shopping list (its details) with the input id
     @PutMapping("/shoppinglists/{id}")
@@ -63,15 +61,15 @@ public class ControllerForRest {
         return ResponseEntity.ok().build();
     }
 
-
-    @GetMapping("/getTestLists")
+    //test data
+    @GetMapping("/gettestlists")
     public List<ShoppingListEntity> getTestListeDetails() {
         List<ShoppingListEntity> shoppingList = new ArrayList<ShoppingListEntity>() {{
             add(new ShoppingListEntity("name1", "author1"));
             add(new ShoppingListEntity("name1", "author1"));
             add(new ShoppingListEntity("name1", "author1"));
         }};
-        System.out.println((shoppingList));
+        System.out.println(shoppingList);
         return shoppingList;
     }
 }
