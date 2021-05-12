@@ -50,7 +50,7 @@ public class ControllerForRest {
         ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
                 .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
 
-        shoppingList.setListName(listDetails.getListName());
+        shoppingList.setList_name(listDetails.getList_name());
         shoppingList.setAuthor(listDetails.getAuthor());
         final ShoppingListEntity updatedList = shoppingListService.saveList(shoppingList);
         return ResponseEntity.ok(updatedList);

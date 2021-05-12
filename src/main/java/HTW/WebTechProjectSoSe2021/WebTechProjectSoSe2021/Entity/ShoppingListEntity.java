@@ -10,11 +10,11 @@ public class ShoppingListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @Column(name = "list_name", nullable = false)
-    private String listName;
-    
-    @Column(name = "author", nullable = false)
+
+    @Column(name = "list_name")
+    private String list_name;
+
+    @Column(name = "author")
     private String author;
 
 
@@ -22,12 +22,13 @@ public class ShoppingListEntity {
 //    private final List<String> listItems = new ArrayList<String>();
 
 
-    public ShoppingListEntity(String listName, String author) {
-        this.listName = listName;
+    public ShoppingListEntity(String list_name, String author) {
+        this.list_name = list_name;
         this.author = author;
     }
 
     public ShoppingListEntity() {
+
     }
 
     //Getter for the id. It is not possible to set a new id for the list after its constructed.
@@ -36,12 +37,12 @@ public class ShoppingListEntity {
     }
 
     //getter and setter for Name. It is possible to set a new name for the list.
-    public String getListName() {
-        return listName;
+    public String getList_name() {
+        return list_name;
     }
 
-    public void setListName(String name) {
-        this.listName = listName;
+    public void setList_name(String name) {
+        this.list_name = list_name;
     }
 
     //Getter for the author. It is not possible to set a new author for the list after its constructed.
@@ -61,20 +62,20 @@ public class ShoppingListEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ShoppingListEntity shoppinglist = (ShoppingListEntity) o;
         return Objects.equals(id, shoppinglist.id) &&
-                Objects.equals(listName, shoppinglist.listName) &&
+                Objects.equals(list_name, shoppinglist.list_name) &&
                 Objects.equals(author, shoppinglist.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, listName, author);
+        return Objects.hash(id, list_name, author);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
         sb.append("ID=").append(id);
-        sb.append(", listName='").append(listName).append('\'');
+        sb.append(", listName='").append(list_name).append('\'');
         sb.append(", author='").append(author).append('\'');
         sb.append('}');
         return sb.toString();

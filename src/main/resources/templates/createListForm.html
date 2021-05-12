@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org" lang="en">
 <head>
     <title>Add a new Shopping List!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -7,7 +7,7 @@
 <body>
 <form action="#" th:action="@{/createlist}" th:object="${shoppingList}" method="post">
     <h1>Add a new Shopping List!</h1>
-    <p>List name: <input type="text" th:field="*{listName}"/></p>
+    <p>List name: <input type="text" th:field="*{list_name}"/></p>
 
     <p>List author: <input type="text" th:field="*{author}"/></p>
 
