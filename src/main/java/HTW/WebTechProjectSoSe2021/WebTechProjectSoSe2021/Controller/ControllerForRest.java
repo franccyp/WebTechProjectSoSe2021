@@ -29,11 +29,10 @@ public class ControllerForRest {
     }
 
     //list out all shopping lists in db
-    @GetMapping("/shoppinglists")
-    public ShoppingListEntity postMapping(@RequestBody ShoppingListEntity shoppingListEntity) {
-
-        return shoppingListService.saveList(shoppingListEntity);
-    }
+//    @GetMapping("/shoppinglists")
+//    public ShoppingListEntity postMapping(@RequestBody ShoppingListEntity shoppingListEntity) {
+//        return shoppingListService.saveList(shoppingListEntity);
+//    }
 
     //list out the particular shopping list with the given id, if not found, exception is thrown
     @GetMapping("/shoppinglists/{id}")
