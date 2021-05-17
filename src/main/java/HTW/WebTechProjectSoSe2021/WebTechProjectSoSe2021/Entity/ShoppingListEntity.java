@@ -11,10 +11,10 @@ public class ShoppingListEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "list_name")
+    @Column(name = "list_name", nullable=false)
     private String list_name;
 
-    @Column(name = "author")
+    @Column(name = "author", nullable=false)
     private String author;
 
 
@@ -41,7 +41,7 @@ public class ShoppingListEntity {
         return list_name;
     }
 
-    public void setList_name(String name) {
+    public void setList_name(String list_name) {
         this.list_name = list_name;
     }
 
@@ -51,8 +51,8 @@ public class ShoppingListEntity {
     }
 
     //we dont need this???
-    public void setAuthor(String name) {
-        this.author = name;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
 
