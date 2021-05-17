@@ -19,20 +19,15 @@ public class ControllerForRest {
 
     @RequestMapping("/")
     public String index() {
-        return "welcome to ShopChop!";
+        return "Welcome to ShopChop!";
     }
 
+    //list out all available shopping lists
     @GetMapping("/shoppinglists")
-    public List<ShoppingListEntity> getAllShoppingLists() {
-
-        return shoppingListService.findAll();
+    public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists() {
+        var allLists = shoppingListService.findAll();
+        return ResponseEntity.ok(allLists);
     }
-
-    //list out all shopping lists in db
-//    @GetMapping("/shoppinglists")
-//    public ShoppingListEntity postMapping(@RequestBody ShoppingListEntity shoppingListEntity) {
-//        return shoppingListService.saveList(shoppingListEntity);
-//    }
 
     //list out the particular shopping list with the given id, if not found, exception is thrown
     @GetMapping("/shoppinglists/{id}")
@@ -64,17 +59,5 @@ public class ControllerForRest {
 
         this.shoppingListService.deleteById(shoppingListId);
         return ResponseEntity.ok().build();
-    }
-
-    //test data
-    @GetMapping("/gettestlists")
-    public List<ShoppingListEntity> getTestListeDetails() {
-        List<ShoppingListEntity> shoppingList = new ArrayList<ShoppingListEntity>() {{
-            add(new ShoppingListEntity("name1", "author1"));
-            add(new ShoppingListEntity("name1", "author1"));
-            add(new ShoppingListEntity("name1", "author1"));
-        }};
-        System.out.println(shoppingList);
-        return shoppingList;
     }
 }
