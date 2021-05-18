@@ -12,11 +12,11 @@ create table if not exists shopping_list
     varchar
 (
     255
-) not null,
+),
     author varchar
 (
     255
-) not null
+)
     );
 
 --alter table shopping_list owner to liedzsmlzxucla;

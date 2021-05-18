@@ -3,10 +3,13 @@
 <head>
     <title>Add a new Shopping List!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="form_stylesheet.css">
 </head>
 <body>
-<h3>List was added!</h3>
-<p th:text="'name: ' + ${shoppingList.list_name}"></p>
-<p th:text="'author: ' + ${shoppingList.author}"></p>
+<div class="container">
+    <h3>List was added!</h3>
+    <p th:text="'name: ' + ${shoppingList.list_name}"></p>
+    <p th:text="'author: ' + ${shoppingList.author}"></p>
+</div>
 </body>
 </html>

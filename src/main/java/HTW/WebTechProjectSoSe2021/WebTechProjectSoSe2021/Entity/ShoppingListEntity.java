@@ -73,9 +73,9 @@ public class ShoppingListEntity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
+        final StringBuilder sb = new StringBuilder("shopping_list{");
         sb.append("ID=").append(id);
-        sb.append(", listName='").append(list_name).append('\'');
+        sb.append(", list_name='").append(list_name).append('\'');
         sb.append(", author='").append(author).append('\'');
         sb.append('}');
         return sb.toString();
