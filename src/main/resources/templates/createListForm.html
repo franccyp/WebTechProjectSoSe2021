@@ -3,9 +3,17 @@
 <head>
     <title>Add a new Shopping List!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" rel="stylesheet" href="form_stylesheet.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/form_stylesheet.css">
 </head>
 <body>
+
+<header>
+    <div class="title_and_logo">
+        <img class="logo" src="../static/pictures/shopping_list.png">
+        <p class="title_logo">ShopChop</p>
+    </div>
+</header>
+
 <form class="container" action="#" th:action="@{/createlist}" th:object="${shoppingList}" method="post">
     <h1 class="title">Add a new Shopping List!</h1>
     <p> List Name: <input class="inputbox" type="text" th:field="*{list_name}"/></p>

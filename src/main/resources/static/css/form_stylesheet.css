@@ -6,8 +6,31 @@
     padding: 0;
 }
 
+header {
+
+}
+
+.title_and_logo {
+    position: fixed;
+    display: inline-flex;
+    margin: 25px 15px 15px 50px;
+    left: 0;
+
+}
+
+.logo {
+    max-width: 60px;
+}
+
+.title_logo {
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: 1000;
+}
+
 body {
-    align-items: center;
+    align-items: flex-start;
     background: #5d9c69;
     color: #ffffff;
     display: grid;
@@ -17,7 +40,7 @@ body {
     height: 100vh;
     justify-items: center;
     weight: 100vw;
-
+    padding-bottom: 20%;
 }
 
 .container {
