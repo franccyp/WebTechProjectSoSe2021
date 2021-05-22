@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 
 @Controller
 public class ControllerForTemplates {
@@ -16,18 +18,24 @@ public class ControllerForTemplates {
     @Autowired
     private ShoppingListService shoppingListService;
 
+    @GetMapping("/alllists")
+    public String listsTable(Model model) {
+        List<ShoppingListEntity> slists = shoppingListService.findAll();
+        model.addAttribute("slists", slists);
+        return "listtable";
+    }
     @GetMapping("/createlist")
     public String createShoppingListForm(Model model) {
         model.addAttribute("shoppingList", new ShoppingListEntity());
-        return "createListForm";
+        return "listcreation";
     }
 
-    //create a shopping list through a userform (ergibt ein Fehler zurzeit)
+    //create a shopping list through a userform
     @PostMapping("/createlist")
     public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model) {
         shoppingListService.saveList(shoppingList);
         model.addAttribute("shoppingList", shoppingList);
-        return "listResultForm";
+        return "listresult";
     }
 
 }

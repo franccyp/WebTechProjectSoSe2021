@@ -6,27 +6,75 @@
     padding: 0;
 }
 
-header {
-
+header{
+    font-size: 35px;
+    color: white;
+    margin-bottom: 2rem;
 }
 
-.title_and_logo {
-    position: fixed;
-    display: inline-flex;
-    margin: 25px 15px 15px 50px;
+.header_and_nav {
+    overflow: hidden;
+    padding: 35px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.header_and_nav:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
     left: 0;
-
+    right: 0;
+    background: url("https://www.bakercommunications.com/images/pattern-icons/5.png");
+    opacity: .2;
 }
 
-.logo {
+.header_and_nav img{
+    float: left;
     max-width: 60px;
+    padding-left: 10px;
 }
 
-.title_logo {
-    padding-left: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 50px;
-    font-weight: 1000;
+.header_and_nav a {
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header_and_nav a.app_name {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.header_and_nav a:hover, .container a:hover {
+    color: black;
+}
+
+.header_and_nav a.active {
+    background-color: #857f84;
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .header-right {
+        float: none;
+    }
 }
 
 body {
@@ -38,43 +86,51 @@ body {
     font-size: 14px;
     font-weight: 400;
     height: 100vh;
-    justify-items: center;
     weight: 100vw;
     padding-bottom: 20%;
 }
 
 .container {
+    text-align: center;
     align-items: center;
-
     background: #487952;
-    padding: 20px 40px;
+    padding: 30px 40px;
     border-radius: 15px;
-    margin: 5px;
+    margin: auto;
+    width: auto;
+
 }
 
+.container a{
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    line-height: 25px;
+    border-radius: 4px;
+}
 
 .inputbox {
+    align-items: center;
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
+    width: 100%;
 }
 
 .button {
-
     color: #000000;
     background-color: #e3e3e3;
     display: inline-block;
     border: none;
     padding: 0 5px;
     border-radius: 10px;
+    cursor: pointer;
 
-    margin-right: 10px;
     outline: none;
     height: 30px;
-    width: 70px;
+    width: 25%;
     margin: 5px;
-
-
 }
 
 .button:hover {
@@ -82,3 +138,18 @@ body {
     transition-duration: 0.4s;
 }
 
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.table_header {
+    height: 70px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table_details {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}

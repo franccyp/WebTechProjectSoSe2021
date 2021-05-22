@@ -38,7 +38,7 @@ public class ControllerForRest {
         return ResponseEntity.ok().body(shoppingList);
     }
 
-    //update a particular shopping list (its details) with the input id
+    //update a particular shopping list (its details) with the input id //doesnt really work
     @PutMapping("/shoppinglists/{id}")
     public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
                                                                   @Validated @RequestBody ShoppingListEntity listDetails) throws ShoppingListNotFoundException {
