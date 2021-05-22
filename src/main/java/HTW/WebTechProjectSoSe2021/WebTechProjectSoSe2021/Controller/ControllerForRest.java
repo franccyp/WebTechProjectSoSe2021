@@ -16,7 +16,7 @@ public class ControllerForRest {
     @Autowired
     private ShoppingListService shoppingListService;
 
-    @RequestMapping("/")
+    @RequestMapping("/greeting")
     public String index() {
         return "Welcome to ShopChop!";
     }
@@ -51,7 +51,7 @@ public class ControllerForRest {
     }
 
     //remove a shopping list with input id from db
-    @DeleteMapping("/shoppinglists/remove/{id}")
+    @RequestMapping(name = "/shoppinglists/remove/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ShoppingListNotFoundException {
         ShoppingListEntity existingShoppingList = this.shoppingListService.findById(shoppingListId)
                 .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));

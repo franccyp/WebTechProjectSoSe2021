@@ -1,6 +1,8 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -11,15 +13,15 @@ public class ShoppingListEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "list_name", nullable=false)
+    @Column(name = "list_name", nullable = false)
     private String list_name;
 
-    @Column(name = "author", nullable=false)
+    @Column(name = "author", nullable = false)
     private String author;
 
 
-//    @ElementCollection
-//    private final List<String> listItems = new ArrayList<String>();
+    @OneToMany
+    private final List<ListItemEntity> listItems = new ArrayList<ListItemEntity>();
 
 
     public ShoppingListEntity(String list_name, String author) {
@@ -64,6 +66,16 @@ public class ShoppingListEntity {
         return Objects.equals(id, shoppinglist.id) &&
                 Objects.equals(list_name, shoppinglist.list_name) &&
                 Objects.equals(author, shoppinglist.author);
+    }
+
+    public List<ListItemEntity> getListItems() {
+        return listItems;
+    }
+
+    //adds a list Item
+    public void addListItem(String itemName) {
+        ListItemEntity listItem = new ListItemEntity(itemName, id);
+        listItems.add(listItem);
     }
 
     @Override

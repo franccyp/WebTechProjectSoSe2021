@@ -23,37 +23,25 @@
 </header>
 
 <div class="container">
-    <h1>Here are all the lists created</h1>
+
     <table class="table">
         <thead>
         <tr>
-            <th class="table_header">List Name</th>
-            <th class="table_header">List Author</th>
+            <th class="table_header">List Item</th>
             <th class="table_header">Options</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${slists.isEmpty()}">
-            <td colspan="2">No lists available</td>
+        <tr th:if="${shoppingListItems.isEmpty()}">
+            <td colspan="2">No items existent available</td>
         </tr>
-        <tr th:each="shoppingList : ${slists}">
-            <td class="table_details"><span th:text="${shoppingList.list_name}">List Name</span></td>
-            <td class="table_details"><span th:text="${shoppingList.author}">List Author</span></td>
-            <td class="table_details">
-                <form action="#" th:action="@{'/singlelistview/{id}'(id=${shoppingList.id})}" th:method="get">
-                    <input class="button" type="hidden" name="_method"/>
-                    <button class="button" type="submit">View</button>
-                </form>
-                <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.id})}" th:method="delete">
-                    <input class="button" type="hidden" name="_method"/>
-                    <button class="button" type="submit">Delete</button>
-                </form>
-            </td>
+        <tr th:each="shoppingList : ${shoppingListItems}">
+            <td class="table_details"><span th:text="${listItem.item_name}">List Item</span></td>
+            <td class="table_details"></td>
 
         </tr>
         </tbody>
     </table>
-<a href="/createlist">Create a new shopping list!</a>
 </div>
 </body>
 </html>

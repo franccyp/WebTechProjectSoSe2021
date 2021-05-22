@@ -18,7 +18,6 @@ public class ShoppingListService {
     private RestTemplate restTemplate;
 
     public ShoppingListService(ShoppingListRepository repository) {
-
         this.shopRepository = repository;
     }
 

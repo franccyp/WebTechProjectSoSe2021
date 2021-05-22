@@ -1,12 +1,15 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ListItemEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ListItemService;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -16,7 +19,10 @@ import java.util.List;
 public class ControllerForTemplates {
 
     @Autowired
+    private ListItemService listItemService;
+    @Autowired
     private ShoppingListService shoppingListService;
+
 
     @GetMapping("/alllists")
     public String listsTable(Model model) {
@@ -24,6 +30,14 @@ public class ControllerForTemplates {
         model.addAttribute("slists", slists);
         return "listtable";
     }
+
+    @GetMapping("/singlelistview/{id}")
+    public String listsItemsFromList(Model model, @PathVariable("id") Long shoppingListId) {
+        List<ListItemEntity> shoppingListItems = listItemService.findByShoppingListId(shoppingListId);
+        model.addAttribute("shoppingListItems", shoppingListItems);
+        return "singlelistview";
+    }
+
     @GetMapping("/createlist")
     public String createShoppingListForm(Model model) {
         model.addAttribute("shoppingList", new ShoppingListEntity());
