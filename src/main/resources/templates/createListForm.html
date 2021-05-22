@@ -7,7 +7,6 @@
     <!-- "../static/css/form_stylesheet.css" for running html file locally-->
     <!-- "@{/css/form_stylesheet.css}" for running html file on server-->
 </head>
-<body>
 
 <header>
     <div class="title_and_logo">
@@ -17,6 +16,8 @@
         <p class="title_logo">ShopChop</p>
     </div>
 </header>
+
+<body>
 
 <form class="container" action="#" th:action="@{/createlist}" th:object="${shoppingList}" method="post">
     <h1 class="title">Add a new Shopping List!</h1>
@@ -28,4 +29,6 @@
 
 </form>
 </body>
+
+
 </html>
