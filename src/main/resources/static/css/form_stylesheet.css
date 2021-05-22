@@ -14,7 +14,7 @@ header{
 
 .header_and_nav {
     overflow: hidden;
-    padding: 35px 10px;
+    padding: 2rem 1rem;
     position: relative;
     z-index: 1;
 }
@@ -31,20 +31,20 @@ header{
     opacity: .2;
 }
 
-.header_and_nav img{
+.header_and_nav img {
     float: left;
-    max-width: 60px;
-    padding-left: 10px;
+    max-width: 4rem;
+    padding-left: 1rem;
 }
 
 .header_and_nav a {
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 1rem;
     text-decoration: none;
     font-size: 30px;
-    line-height: 25px;
-    border-radius: 4px;
+    line-height: 2rem;
+    border-radius: 0.5rem;
 }
 
 .header_and_nav a.app_name {
@@ -65,7 +65,7 @@ header{
     float: right;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 31rem) {
     .header a {
         float: none;
         display: block;
@@ -94,27 +94,26 @@ body {
     text-align: center;
     align-items: center;
     background: #487952;
-    padding: 30px 40px;
-    border-radius: 15px;
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
     margin: auto;
     width: auto;
-
 }
 
-.container a{
+.container a {
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 0.5rem;
     text-decoration: none;
-    line-height: 25px;
-    border-radius: 4px;
+    line-height: 1rem;
+    border-radius: 0.25rem;
 }
 
 .inputbox {
     align-items: center;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem;
     width: 100%;
 }
 
@@ -123,14 +122,14 @@ body {
     background-color: #e3e3e3;
     display: inline-block;
     border: none;
-    padding: 0 5px;
-    border-radius: 10px;
+    padding: 0 0.25rem;
+    border-radius: 0.5rem;
     cursor: pointer;
 
     outline: none;
-    height: 30px;
-    width: 25%;
-    margin: 5px;
+    height: 2rem;
+    text-indent: 0;
+    margin: 0.25rem;
 }
 
 .button:hover {
@@ -141,15 +140,15 @@ body {
 .table {
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 .table_header {
-    height: 70px;
+    height: 4.5rem;
     border-bottom: 1px solid #ddd;
 }
 
 .table_details {
-    padding: 8px;
+    padding: 0.25rem;
     border-bottom: 1px solid #ddd;
 }

@@ -29,6 +29,7 @@
         <tr>
             <th class="table_header">List Name</th>
             <th class="table_header">List Author</th>
+            <th class="table_header">Options</th>
         </tr>
         </thead>
         <tbody>
@@ -38,6 +39,9 @@
         <tr th:each="shoppingList : ${slists}">
             <td class="table_details"><span th:text="${shoppingList.list_name}">List Name</span></td>
             <td class="table_details"><span th:text="${shoppingList.author}">List Author</span></td>
+            <td class="table_details"><input class="button" type="button" value="View"/><a class="button"
+                                                                                           th:href="@{/shoppinglists/remove/${shoppingList.id}}">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
