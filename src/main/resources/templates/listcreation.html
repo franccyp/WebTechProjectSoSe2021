@@ -28,7 +28,7 @@
     <h1 class="title">Add a new Shopping List!</h1>
     <p> List Name: <input class="inputbox" type="text" th:field="*{list_name}"/></p>
     <p> List Author: <input class="inputbox" type="text" th:field="*{author}"/></p>
-        <p>List Item: <input class="inputbox" type="text" th:text="${itemName}"/></p>
+        <p>List Item: <input class="inputbox" type="text" th:name="itemName"/></p>
     <div class="buttons">
         <p><input class="button" type="submit" value="Submit"/> <input class="button" type="reset" value="Reset"/></p>
     </div>

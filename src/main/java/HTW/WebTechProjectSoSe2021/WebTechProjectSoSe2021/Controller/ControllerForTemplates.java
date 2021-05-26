@@ -43,7 +43,7 @@ public class ControllerForTemplates {
 
     //create a shopping list through a userform
     @PostMapping("/createlist")
-    public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model, @RequestParam("itemName") String itemName) {
+    public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model, @RequestParam(value = "itemName") String itemName) {
         shoppingList.addListItem(itemName);
         shoppingListService.saveList(shoppingList);
         model.addAttribute("shoppingList", shoppingList);

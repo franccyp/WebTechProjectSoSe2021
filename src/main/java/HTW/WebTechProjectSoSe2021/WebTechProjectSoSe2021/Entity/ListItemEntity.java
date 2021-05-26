@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "list_item")
 public class ListItemEntity {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long item_id;
@@ -17,9 +16,8 @@ public class ListItemEntity {
     @Column(name = "list_id", nullable = false)
     private double list_id;
 
-    public ListItemEntity(String item_name, Long list_id) {
+    public ListItemEntity(String item_name) {
         this.item_name = item_name;
-        this.list_id = list_id;
     }
 
     public ListItemEntity() {

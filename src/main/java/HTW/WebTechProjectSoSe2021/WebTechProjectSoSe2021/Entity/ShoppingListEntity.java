@@ -73,10 +73,15 @@ public class ShoppingListEntity {
         return listItems;
     }
 
-    //adds a list Item
+    //adds a list Item only through name
     public void addListItem(String itemName) {
-        ListItemEntity listItem = new ListItemEntity(itemName, list_id);
+        ListItemEntity listItem = new ListItemEntity(itemName);
         listItems.add(listItem);
+    }
+
+    //adds a list Item
+    public void addListItem(ListItemEntity item) {
+        listItems.add(item);
     }
 
     @Override
