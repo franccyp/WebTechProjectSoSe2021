@@ -2,6 +2,7 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "list_item")
 public class ListItemEntity {
