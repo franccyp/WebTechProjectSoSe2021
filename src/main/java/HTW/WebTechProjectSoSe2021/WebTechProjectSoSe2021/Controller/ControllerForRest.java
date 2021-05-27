@@ -51,12 +51,13 @@ public class ControllerForRest {
     }
 
     //remove a shopping list with input id from db
-    @RequestMapping(name = "/shoppinglists/remove/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/shoppinglists/remove/{id}")
     public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ShoppingListNotFoundException {
-        ShoppingListEntity existingShoppingList = this.shoppingListService.findById(shoppingListId)
-                .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
-
-        this.shoppingListService.deleteById(shoppingListId);
-        return ResponseEntity.ok().build();
+        try {
+            shoppingListService.deleteById(shoppingListId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            throw new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
+        }
     }
 }
