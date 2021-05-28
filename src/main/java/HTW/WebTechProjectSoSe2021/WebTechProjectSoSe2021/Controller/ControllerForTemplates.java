@@ -1,8 +1,8 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ListItemEntity;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ItemEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ListItemService;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ControllerForTemplates {
 
     @Autowired
-    private ListItemService listItemService;
+    private ItemService itemService;
     @Autowired
     private ShoppingListService shoppingListService;
 
@@ -30,7 +30,7 @@ public class ControllerForTemplates {
 
     @GetMapping("/singlelistview/{id}")
     public String listsItemsFromList(Model model, @PathVariable("id") Long shoppingListId) {
-        List<ListItemEntity> shoppingListItems = listItemService.findByShoppingListId(shoppingListId);
+        List<ItemEntity> shoppingListItems = itemService.findByShoppingListId(shoppingListId);
         model.addAttribute("shoppingListItems", shoppingListItems);
         return "singlelistview";
     }
@@ -44,7 +44,7 @@ public class ControllerForTemplates {
     //create a shopping list through a userform
     @PostMapping("/createlist")
     public String createShoppingList(@ModelAttribute ShoppingListEntity shoppingList, Model model, @RequestParam(value = "itemName") String itemName) {
-        ListItemEntity listItem = new ListItemEntity(itemName);
+        ItemEntity listItem = new ItemEntity(itemName);
         shoppingList.addListItem(listItem);
         shoppingListService.saveList(shoppingList);
         model.addAttribute("shoppingList", shoppingList);

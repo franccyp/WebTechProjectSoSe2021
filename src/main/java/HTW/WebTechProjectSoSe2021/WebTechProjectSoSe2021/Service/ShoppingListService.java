@@ -15,7 +15,7 @@ public class ShoppingListService {
 
     @Autowired
     private final ShoppingListRepository shopRepository;
-    private ListItemService listItemService;
+    private ItemService itemService;
     private RestTemplate restTemplate;
 
     public ShoppingListService(ShoppingListRepository repository) {
@@ -53,7 +53,7 @@ public class ShoppingListService {
 
     //remove or delete shopping list by its id
     public void deleteById(Long shopId) {
-        listItemService.deleteByShoppingListId(shopId);
+        itemService.deleteByShoppingListId(shopId);
         shopRepository.deleteById(shopId);
     }
 }

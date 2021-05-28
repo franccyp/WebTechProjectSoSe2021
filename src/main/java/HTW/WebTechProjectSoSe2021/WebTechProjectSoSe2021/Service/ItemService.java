@@ -1,7 +1,7 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service;
 
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ListItemEntity;
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ListItemRepository;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ItemEntity;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ListItemService {
+public class ItemService {
 
     @Autowired
-    private final ListItemRepository itemRepository;
+    private final ItemRepository itemRepository;
     private RestTemplate restTemplate;
 
-    public ListItemService(ListItemRepository repository) {
+    public ItemService(ItemRepository repository) {
         this.itemRepository = repository;
     }
 
     //saves list item to DB
-    public ListItemEntity saveListItem(ListItemEntity listItem) {
+    public ItemEntity saveListItem(ItemEntity listItem) {
 
         return itemRepository.save(listItem);
 
@@ -29,11 +29,11 @@ public class ListItemService {
 
 
     //find list items by shopping list id
-    public List<ListItemEntity> findByShoppingListId(Long shoppingListId) {
+    public List<ItemEntity> findByShoppingListId(Long shoppingListId) {
 
         var it = itemRepository.findAll();
 
-        var sList = new ArrayList<ListItemEntity>();
+        var sList = new ArrayList<ItemEntity>();
         it.forEach(e -> {
             if (e.getList_id() == shoppingListId) {
                 sList.add(e);

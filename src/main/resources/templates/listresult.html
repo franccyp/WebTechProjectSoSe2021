@@ -11,11 +11,11 @@
 <body>
 <header>
     <div class="header_and_nav">
-        <a href="/createlist" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
+        <a th:href="@{/createlist}" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
         <!-- src=../static/pictures/shopping_list.png for running html file locally-->
         <!-- th:src=@{/pictures/shopping_list.png} for running html file on server-->
         <div class="header-right">
-            <a class="active" href="#home">Home</a>
+            <a href="#home">Home</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
         </div>
@@ -26,7 +26,7 @@
     <h1>List was added!</h1>
     <p th:text="'name: ' + ${shoppingList.list_name}"></p>
     <p th:text="'author: ' + ${shoppingList.author}"></p>
-    <a href="/alllists">See all created lists.</a>
+    <a th:href="@{/alllists}">See all created lists.</a>
 </div>
 </body>
 

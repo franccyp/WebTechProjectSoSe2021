@@ -22,7 +22,7 @@ public class ShoppingListEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
-    private final List<ListItemEntity> listItems = new ArrayList<ListItemEntity>();
+    private final List<ItemEntity> listItems = new ArrayList<ItemEntity>();
 
 
     public ShoppingListEntity(String list_name, String author) {
@@ -58,6 +58,21 @@ public class ShoppingListEntity {
         this.author = author;
     }
 
+    //get all items in a list
+    public List<ItemEntity> getListItems() {
+        return listItems;
+    }
+
+    //adds a list Item only through name
+    public void addListItem(String itemName) {
+        ItemEntity listItem = new ItemEntity(itemName);
+        listItems.add(listItem);
+    }
+
+    //adds a list Item
+    public void addListItem(ItemEntity item) {
+        listItems.add(item);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,21 +82,6 @@ public class ShoppingListEntity {
         return Objects.equals(list_id, shoppinglist.list_id) &&
                 Objects.equals(list_name, shoppinglist.list_name) &&
                 Objects.equals(author, shoppinglist.author);
-    }
-
-    public List<ListItemEntity> getListItems() {
-        return listItems;
-    }
-
-    //adds a list Item only through name
-    public void addListItem(String itemName) {
-        ListItemEntity listItem = new ListItemEntity(itemName);
-        listItems.add(listItem);
-    }
-
-    //adds a list Item
-    public void addListItem(ListItemEntity item) {
-        listItems.add(item);
     }
 
     @Override

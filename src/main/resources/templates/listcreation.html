@@ -11,7 +11,7 @@
 <body>
 <header>
     <div class="header_and_nav">
-        <a href="/createlist" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
+        <a th:href="@{/createlist}" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
         <!-- src=../static/pictures/shopping_list.png for running html file locally-->
         <!-- th:src=@{/pictures/shopping_list.png} for running html file on server-->
         <div class="header-right">
@@ -22,13 +22,11 @@
     </div>
 </header>
 
-<body>
-
 <form class="container" action="#" th:action="@{/createlist}" th:object="${shoppingList}" method="post">
     <h1 class="title">Add a new Shopping List!</h1>
     <p> List Name: <input class="inputbox" type="text" th:field="*{list_name}"/></p>
     <p> List Author: <input class="inputbox" type="text" th:field="*{author}"/></p>
-        <p>List Item: <input class="inputbox" type="text" th:name="itemName"/></p>
+        <p>Item: <input class="inputbox" type="text" th:name="itemName"/></p>
     <div class="buttons">
         <p><input class="button" type="submit" value="Submit"/> <input class="button" type="reset" value="Reset"/></p>
     </div>

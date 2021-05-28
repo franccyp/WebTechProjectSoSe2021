@@ -11,11 +11,11 @@
 <body>
 <header>
     <div class="header_and_nav">
-        <a href="/createlist" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
+        <a th:href="@{/createlist}" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
         <!-- src=../static/pictures/shopping_list.png for running html file locally-->
         <!-- th:src=@{/pictures/shopping_list.png} for running html file on server-->
         <div class="header-right">
-            <a class="active" href="#home">Home</a>
+            <a href="#home">Home</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
         </div>
@@ -23,7 +23,6 @@
 </header>
 
 <div class="container">
-
     <table class="table">
         <thead>
         <tr>
@@ -40,10 +39,9 @@
             <td class="table_details">
                 <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingListItem.item_id})}"
                       th:method="delete">
-                    <button class="button" type="submit">Delete</button>
+                    <button class="button" type="submit" value="Delete"></button>
                 </form>
             </td>
-
         </tr>
         </tbody>
     </table>

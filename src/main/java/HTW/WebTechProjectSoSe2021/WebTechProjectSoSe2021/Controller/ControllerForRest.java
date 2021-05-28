@@ -1,7 +1,7 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ShoppingListNotFoundException;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ResourceNotFoundException;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,18 +31,18 @@ public class ControllerForRest {
     //list out the particular shopping list with the given id, if not found, exception is thrown
     @GetMapping("/shoppinglists/{id}")
     public ResponseEntity<ShoppingListEntity> getShoppingListById(@PathVariable(value = "id") Long shoppingListId)
-            throws ShoppingListNotFoundException {
+            throws ResourceNotFoundException {
         ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
-                .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
+                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
         return ResponseEntity.ok().body(shoppingList);
     }
 
     //update a particular shopping list (its details) with the input id //doesnt really work
     @PutMapping("/shoppinglists/{id}")
     public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
-                                                                  @Validated @RequestBody ShoppingListEntity listDetails) throws ShoppingListNotFoundException {
+                                                                  @Validated @RequestBody ShoppingListEntity listDetails) throws ResourceNotFoundException {
         ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
-                .orElseThrow(() -> new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
+                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
 
         shoppingList.setList_name(listDetails.getList_name());
         shoppingList.setAuthor(listDetails.getAuthor());
@@ -52,12 +52,12 @@ public class ControllerForRest {
 
     //remove a shopping list with input id from db
     @RequestMapping(value = "/shoppinglists/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ShoppingListNotFoundException {
+    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ResourceNotFoundException {
         try {
             shoppingListService.deleteById(shoppingListId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
-            throw new ShoppingListNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
+            throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
         }
     }
 }

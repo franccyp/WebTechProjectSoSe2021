@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "list_item")
-public class ListItemEntity {
+public class ItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +17,11 @@ public class ListItemEntity {
     @Column(name = "list_id", nullable = false)
     private Long list_id;
 
-    public ListItemEntity(String item_name) {
+    public ItemEntity(String item_name) {
         this.item_name = item_name;
     }
 
-    public ListItemEntity() {
+    public ItemEntity() {
     }
 
     public Long getItem_id() {
@@ -36,11 +36,11 @@ public class ListItemEntity {
         this.item_name = item_name;
     }
 
-    public long getList_id() {
+    public Long getList_id() {
         return list_id;
     }
 
-    public void setList_id(long list_id) {
+    public void setList_id(Long list_id) {
         this.list_id = list_id;
     }
 
