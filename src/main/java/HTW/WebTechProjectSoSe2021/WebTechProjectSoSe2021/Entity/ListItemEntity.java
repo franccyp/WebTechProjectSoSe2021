@@ -15,7 +15,7 @@ public class ListItemEntity {
     private String item_name;
 
     @Column(name = "list_id", nullable = false)
-    private double list_id;
+    private Long list_id;
 
     public ListItemEntity(String item_name) {
         this.item_name = item_name;
@@ -36,11 +36,11 @@ public class ListItemEntity {
         this.item_name = item_name;
     }
 
-    public double getList_id() {
+    public long getList_id() {
         return list_id;
     }
 
-    public void setList_id(double list_id) {
+    public void setList_id(long list_id) {
         this.list_id = list_id;
     }
 

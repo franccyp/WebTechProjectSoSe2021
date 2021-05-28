@@ -41,4 +41,16 @@ public class ListItemService {
         });
         return sList;
     }
+
+    //delete list items by shopping list id
+    public void deleteByShoppingListId(Long shoppingListId) {
+
+        var it = itemRepository.findAll();
+
+        it.forEach(e -> {
+            if (e.getList_id() == shoppingListId) {
+                itemRepository.deleteById(e.getItem_id());
+            }
+        });
+    }
 }

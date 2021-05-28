@@ -51,7 +51,7 @@ public class ControllerForRest {
     }
 
     //remove a shopping list with input id from db
-    @DeleteMapping("/shoppinglists/remove/{id}")
+    @RequestMapping(value = "/shoppinglists/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ShoppingListNotFoundException {
         try {
             shoppingListService.deleteById(shoppingListId);
