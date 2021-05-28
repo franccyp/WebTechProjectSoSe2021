@@ -38,9 +38,8 @@
         <tr th:each="shoppingListItem : ${shoppingListItems}">
             <td class="table_details"><span th:text="${shoppingListItem.item_name}">List Item</span></td>
             <td class="table_details">
-                <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.list_id})}"
+                <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingListItem.item_id})}"
                       th:method="delete">
-                    <input class="button" type="hidden" th:field="${list_id}"/>
                     <button class="button" type="submit">Delete</button>
                 </form>
             </td>

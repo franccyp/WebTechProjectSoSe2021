@@ -41,16 +41,13 @@
             <td class="table_details"><span th:text="${shoppingList.author}">List Author</span></td>
             <td class="table_details">
                 <form action="#" th:action="@{'/singlelistview/{id}'(id=${shoppingList.list_id})}" th:method="get">
-                    <input class="button" type="hidden" th:field="${list_id}"/>
                     <button class="button" type="submit">View</button>
                 </form>
                 <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.list_id})}"
                       th:method="delete">
-                    <input class="button" type="hidden" th:field="${list_id}"/>
                     <button class="button" type="submit">Delete</button>
                 </form>
             </td>
-
         </tr>
         </tbody>
     </table>

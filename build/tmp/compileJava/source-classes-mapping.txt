@@ -1,5 +1,5 @@
-HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Controller/ControllerForRest.java
- HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller.ControllerForRest
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ShoppingListRepository.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ShoppingListRepository
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Entity/ListItemEntity.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ListItemEntity
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/ShopChopApp.java
@@ -16,5 +16,5 @@ HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Exception/ShoppingListNotFound
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ShoppingListNotFoundException
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ListItemRepository.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ListItemRepository
-HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ShoppingListRepository.java
- HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ShoppingListRepository
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Controller/ControllerForRest.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller.ControllerForRest
