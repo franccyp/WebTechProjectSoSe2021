@@ -52,12 +52,12 @@ public class ControllerForRest {
 
     //remove a shopping list with input id from db
     @RequestMapping(value = "/shoppinglists/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ResourceNotFoundException {
-        try {
-            shoppingListService.deleteById(shoppingListId);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
-        }
+    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) /*throws ResourceNotFoundException*/ {
+//        try {
+        shoppingListService.deleteById(shoppingListId);
+        return ResponseEntity.ok().build();
+//        } catch (Exception e) {
+//            throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
+//        }
     }
 }

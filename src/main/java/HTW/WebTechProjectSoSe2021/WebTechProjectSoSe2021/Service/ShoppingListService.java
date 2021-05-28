@@ -15,11 +15,12 @@ public class ShoppingListService {
 
     @Autowired
     private final ShoppingListRepository shopRepository;
-    private ItemService itemService;
+    private final ItemService itemService;
     private RestTemplate restTemplate;
 
-    public ShoppingListService(ShoppingListRepository repository) {
+    public ShoppingListService(ShoppingListRepository repository, ItemService itemService) {
         this.shopRepository = repository;
+        this.itemService = itemService;
     }
 
     //saves list to DB

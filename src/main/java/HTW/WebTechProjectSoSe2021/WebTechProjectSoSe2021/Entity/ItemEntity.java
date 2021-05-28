@@ -14,7 +14,7 @@ public class ItemEntity {
     @Column(name = "item_name", nullable = false)
     private String item_name;
 
-    @Column(name = "list_id", nullable = false)
+    @JoinColumn(name = "list_id", nullable = false)
     private Long list_id;
 
     public ItemEntity(String item_name) {
