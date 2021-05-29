@@ -1,6 +1,6 @@
 create table if not exists shopping_list
 (
-    id
+    list_id
     bigserial
     not
     null

@@ -23,10 +23,11 @@
 </header>
 
 <div class="container">
-    <h1>Here are all the lists created</h1>
+    <h1>Here are all the shopping lists created</h1>
     <table class="table">
         <thead>
         <tr>
+            <th class="table_header">Shopping List ID</th>
             <th class="table_header">List Name</th>
             <th class="table_header">List Author</th>
             <th class="table_header">Options</th>
@@ -34,18 +35,19 @@
         </thead>
         <tbody>
         <tr th:if="${slists.isEmpty()}">
-            <td colspan="2">No lists available</td>
+            <td colspan="4" rowspan="2">No lists available</td>
         </tr>
         <tr th:each="shoppingList : ${slists}">
+            <td class="table_details"><span th:text="${shoppingList.list_id}">Shopping List ID</span></td>
             <td class="table_details"><span th:text="${shoppingList.list_name}">List Name</span></td>
             <td class="table_details"><span th:text="${shoppingList.author}">List Author</span></td>
             <td class="table_details">
                 <form action="#" th:action="@{'/singlelistview/{id}'(id=${shoppingList.list_id})}" th:method="get">
-                    <button class="button" type="submit" value="View">View</button>
+                    <button class="button" type="submit">View</button>
                 </form>
                 <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.list_id})}"
                       th:method="delete">
-                    <button class="button" type="submit" value="Delete">Delete</button>
+                    <button class="button" type="submit">Delete</button>
                 </form>
             </td>
         </tr>

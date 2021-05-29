@@ -1,7 +1,9 @@
 package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ItemEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ResourceNotFoundException;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,9 @@ public class ControllerForRest {
 
     @Autowired
     private ShoppingListService shoppingListService;
+
+    @Autowired
+    private ItemService itemService;
 
     @RequestMapping("/greeting")
     public String index() {
@@ -52,12 +57,23 @@ public class ControllerForRest {
 
     //remove a shopping list with input id from db
     @RequestMapping(value = "/shoppinglists/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) /*throws ResourceNotFoundException*/ {
-//        try {
-        shoppingListService.deleteById(shoppingListId);
-        return ResponseEntity.ok().build();
-//        } catch (Exception e) {
-//            throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
-//        }
+    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") Long shoppingListId) throws ResourceNotFoundException {
+        try {
+            itemService.deleteByShoppingListId(shoppingListId);
+            shoppingListService.deleteById(shoppingListId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
+        }
+    }
+
+    @RequestMapping(value = "/item/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<ItemEntity> deleteItem(@PathVariable("id") Long itemId) throws ResourceNotFoundException {
+        try {
+            itemService.deleteById(itemId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("Item with the id : " + itemId + " is not available in the shopping list.");
+        }
     }
 }

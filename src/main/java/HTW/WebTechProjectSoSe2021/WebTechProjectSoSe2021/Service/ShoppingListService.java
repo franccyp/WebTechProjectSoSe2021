@@ -54,7 +54,6 @@ public class ShoppingListService {
 
     //remove or delete shopping list by its id
     public void deleteById(Long shopId) {
-        itemService.deleteByShoppingListId(shopId);
         shopRepository.deleteById(shopId);
     }
 }

@@ -30,8 +30,8 @@ public class ControllerForTemplates {
 
     @GetMapping("/singlelistview/{id}")
     public String listsItemsFromList(Model model, @PathVariable("id") Long shoppingListId) {
-        List<ItemEntity> shoppingListItems = itemService.findByShoppingListId(shoppingListId);
-        model.addAttribute("shoppingListItems", shoppingListItems);
+        List<ItemEntity> shoppingItems = itemService.findByShoppingListId(shoppingListId);
+        model.addAttribute("shoppingItems", shoppingItems);
         return "singlelistview";
     }
 

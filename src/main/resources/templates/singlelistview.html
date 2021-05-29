@@ -26,20 +26,22 @@
     <table class="table">
         <thead>
         <tr>
-            <th class="table_header">List Item</th>
+            <th class="table_header">Item ID</th>
+            <th class="table_header">Item</th>
             <th class="table_header">Options</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${shoppingListItems.isEmpty()}">
-            <td colspan="2">No items existent available</td>
+        <tr th:if="${shoppingItems.isEmpty()}">
+            <td colspan="2">No items available</td>
         </tr>
-        <tr th:each="shoppingListItem : ${shoppingListItems}">
-            <td class="table_details"><span th:text="${shoppingListItem.item_name}">List Item</span></td>
+        <tr th:each="shoppingItems : ${shoppingItems}">
+            <td class="table_details"><span th:text="${shoppingItems.item_id}">Item ID</span></td>
+            <td class="table_details"><span th:text="${shoppingItems.item_name}">Item</span></td>
             <td class="table_details">
-                <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingListItem.item_id})}"
+                <form action="#" th:action="@{'/item/remove/{id}'(id=${shoppingItems.item_id})}"
                       th:method="delete">
-                    <button class="button" type="submit" value="Delete">Delete</button>
+                    <button class="button" type="submit">Delete</button>
                 </form>
             </td>
         </tr>
