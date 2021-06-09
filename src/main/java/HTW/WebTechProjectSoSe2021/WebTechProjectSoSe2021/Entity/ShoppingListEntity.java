@@ -22,7 +22,7 @@ public class ShoppingListEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
-    private final List<ItemEntity> listItems = new ArrayList<ItemEntity>();
+    private List<ItemEntity> listItems = new ArrayList<ItemEntity>();
 
 
     public ShoppingListEntity(String list_name, String author) {

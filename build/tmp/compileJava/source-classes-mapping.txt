@@ -1,5 +1,7 @@
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Controller/ControllerForRest.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller.ControllerForRest
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Entity/ShoppingListDTO.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListDTO
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Entity/ShoppingListEntity.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Service/ShoppingListService.java

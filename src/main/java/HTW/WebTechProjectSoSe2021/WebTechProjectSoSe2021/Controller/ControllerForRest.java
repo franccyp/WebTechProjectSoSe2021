@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -57,12 +56,11 @@ public class ControllerForRest {
     }
 
     //remove a shopping list with input id from db
-    @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST+"/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<ShoppingListEntity> deleteList(@PathVariable("id") HttpStatus httpResponse, Long shoppingListId) throws ResourceNotFoundException {
+    @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+    public String deleteList(@PathVariable("id") HttpStatus httpResponse, Long shoppingListId) throws ResourceNotFoundException {
         try {
             itemService.deleteByShoppingListId(shoppingListId);
             shoppingListService.deleteById(shoppingListId);
-            httpResponse.sendRedirect("/alllists");
             return "redirect:/alllists"; //ResponseEntity.ok().build();
         } catch (Exception e) {
             throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
@@ -77,6 +75,8 @@ public class ControllerForRest {
         } catch (Exception e) {
             throw new ResourceNotFoundException("Item with the id : " + itemId + " is not available in the shopping list.");
         }
+
+    }
 
     //create a shopping list through a userform
     @PostMapping("/shoppinglists/createlist")
