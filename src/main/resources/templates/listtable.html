@@ -46,7 +46,7 @@
                     <button class="button" type="submit">View</button>
                 </form>
                 <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.list_id})}"
-                      th:method="delete">
+                      th:method="post">
                     <button class="button" type="submit">Delete</button>
                 </form>
             </td>

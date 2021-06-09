@@ -22,7 +22,7 @@ public class ShoppingListEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
-    private final List<ItemEntity> listItems = new ArrayList<ItemEntity>();
+    private List<ItemEntity> listItems = new ArrayList<ItemEntity>();
 
 
     public ShoppingListEntity(String list_name, String author) {
@@ -53,7 +53,7 @@ public class ShoppingListEntity {
         return author;
     }
 
-    //we dont need this???
+    //sets the author
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -61,6 +61,11 @@ public class ShoppingListEntity {
     //get all items in a list
     public List<ItemEntity> getListItems() {
         return listItems;
+    }
+
+    //sets list
+    public void setListItems(List<ItemEntity> listItems) {
+        this.listItems = listItems;
     }
 
     //adds a list Item only through name
