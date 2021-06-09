@@ -19,15 +19,13 @@ public class ShoppingListEntity {
     @Column(name = "author", nullable = false)
     private String author;
 
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
     private final List<ItemEntity> listItems = new ArrayList<ItemEntity>();
 
 
-    public ShoppingListEntity(String list_name, String author) {
+    public ShoppingListEntity(String list_name) {
         this.list_name = list_name;
-        this.author = author;
     }
 
     public ShoppingListEntity() {
@@ -48,12 +46,12 @@ public class ShoppingListEntity {
         this.list_name = list_name;
     }
 
-    //Getter for the author. It is not possible to set a new author for the list after its constructed.
+    //Getter for the author.
     public String getAuthor() {
         return author;
     }
 
-    //we dont need this???
+    //Setter for the author.
     public void setAuthor(String author) {
         this.author = author;
     }

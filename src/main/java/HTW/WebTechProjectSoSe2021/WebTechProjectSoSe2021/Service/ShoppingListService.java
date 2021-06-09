@@ -36,13 +36,14 @@ public class ShoppingListService {
     }
 
     //find all shopping lists
-    public List<ShoppingListEntity> findAll() {
+    public List<ShoppingListEntity> findAll(String user) {
 
         var it = shopRepository.findAll();
 
         var sList = new ArrayList<ShoppingListEntity>();
-        it.forEach(e -> sList.add(e));
-
+        for (ShoppingListEntity s : it){
+            if(s.getAuthor()!=null && s.getAuthor().equals(user)) sList.add(s);
+        }
         return sList;
     }
 

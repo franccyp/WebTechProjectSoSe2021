@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout (~{::body})}" xmlns:th="https://thymeleaf.org">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+<section class="one">
+  <div class="container">
+    <h1 class="startpage">ShopChop saves lives</h1>
+    <p class="homepage">Life is too short to worry about shopping lists. Live longer with us.</p>
+    <form action="#" th:action="@{/createlist}">
+      <button class="button_homepage" type="submit">Get Started</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>

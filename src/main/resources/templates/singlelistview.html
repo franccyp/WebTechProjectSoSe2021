@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" lang="en">
+<<html th:replace="~{layout :: layout (~{::body})}" lang="en" xmlns:th="https://thymeleaf.org">
 <head>
     <title>All Shopping Lists</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,20 +9,8 @@
 </head>
 
 <body>
-<header>
-    <div class="header_and_nav">
-        <a th:href="@{/createlist}" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
-        <!-- src=../static/pictures/shopping_list.png for running html file locally-->
-        <!-- th:src=@{/pictures/shopping_list.png} for running html file on server-->
-        <div class="header-right">
-            <a href="#home">Home</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
-    </div>
-</header>
-
 <div class="container">
+<!--    <h1 th:text="${shoppingItems.}"></h1> not sure how to implement this, want to show the name of the list on top of the single list table-->
     <table class="table">
         <thead>
         <tr>
@@ -33,7 +21,7 @@
         </thead>
         <tbody>
         <tr th:if="${shoppingItems.isEmpty()}">
-            <td colspan="2">No items available</td>
+            <td class="table_empty" colspan="3" rowspan="2">No items available</td>
         </tr>
         <tr th:each="shoppingItems : ${shoppingItems}">
             <td class="table_details"><span th:text="${shoppingItems.item_id}">Item ID</span></td>
