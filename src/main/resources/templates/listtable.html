@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" lang="en">
+<html th:replace="~{layout :: layout (~{::body})}" lang="en" xmlns:th="https://thymeleaf.org">
 <head>
     <title>All Shopping Lists</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,19 +9,6 @@
 </head>
 
 <body>
-<header>
-    <div class="header_and_nav">
-        <a th:href="@{/createlist}" class="app_name"><img class="logo" th:src=@{/pictures/shopping_list.png}>ShopChop</a>
-        <!-- src=../static/pictures/shopping_list.png for running html file locally-->
-        <!-- th:src=@{/pictures/shopping_list.png} for running html file on server-->
-        <div class="header-right">
-            <a href="#home">Home</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
-    </div>
-</header>
-
 <div class="container">
     <h1>Here are all the shopping lists created</h1>
     <table class="table">
@@ -29,18 +16,16 @@
         <tr>
             <th class="table_header">Shopping List ID</th>
             <th class="table_header">List Name</th>
-            <th class="table_header">List Author</th>
             <th class="table_header">Options</th>
         </tr>
         </thead>
         <tbody>
         <tr th:if="${slists.isEmpty()}">
-            <td colspan="4" rowspan="2">No lists available</td>
+            <td class="table_empty" colspan="4" rowspan="2">No lists available</td>
         </tr>
         <tr th:each="shoppingList : ${slists}">
             <td class="table_details"><span th:text="${shoppingList.list_id}">Shopping List ID</span></td>
             <td class="table_details"><span th:text="${shoppingList.list_name}">List Name</span></td>
-            <td class="table_details"><span th:text="${shoppingList.author}">List Author</span></td>
             <td class="table_details">
                 <form action="#" th:action="@{'/singlelistview/{id}'(id=${shoppingList.list_id})}" th:method="get">
                     <button class="button" type="submit">View</button>
