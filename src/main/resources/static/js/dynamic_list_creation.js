@@ -1,6 +1,5 @@
 const app = Vue.createApp({})
 
-
 app.component('dynamic_list', {
 
     data() {
@@ -53,14 +52,7 @@ app.component('dynamic_list', {
                 }, (error) => {
                     console.log('could not save Product!');
                 });
-        },
-        openpopup() {
-            this.popUpBox.display = "block";
-        },
-        mounted() {
-            this.popupData.display = "block";
         }
-
     }
 })
 

@@ -74,6 +74,5 @@ public class ControllerForTemplates {
         return new ModelAndView(ViewNames.ALL_LISTS);
     }
 
-
 }
 
