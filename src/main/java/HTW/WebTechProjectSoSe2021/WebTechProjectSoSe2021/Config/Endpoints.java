@@ -13,5 +13,6 @@ public class Endpoints {
         public static final String LIST = "/createlist";
         public static final String SINGLE_LIST = "/singlelistview";
         public static final String ALL_LISTS = "/alllists";
+        public static final String ABOUT = "/about";
     }
 }

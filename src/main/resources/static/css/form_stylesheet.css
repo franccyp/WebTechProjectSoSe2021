@@ -140,6 +140,9 @@ body {
 .one {
     background-color: #a3bcb6;
     position: absolute;
+    text-align: center;
+    align-items: center;
+    padding: 2rem 2.5rem;
     width: 100%;
     top: 50%;
     left: 50%;
@@ -160,48 +163,48 @@ body {
     min-width: 8rem;
     height: 4rem;
     padding: 1rem 2rem;
-    border: 0.125rem solid #000;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+    border: none;
     display: inline-block;
+    position: relative;
     text-align: center;
+    font-weight: 500;
     margin: 0.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: #a3bcb6;
+}
+
+.button_webpage {
+    background-color: #a3bcb6;
+    border: 0.125rem solid #000;
+}
+
+.button_webpage:hover {
+    background-color: #f1b24a;
+    color: #fff;
 }
 
 .button_homepage {
-    min-width: 7rem;
-    min-height: 4rem;
-    padding: 1rem 2rem;
     border: 0.125rem solid #000;
-    font-weight: 500;
     background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    width: auto;
-    min-width: 5rem;
-    height: auto;
-    min-height: 2rem;
     outline: none;
     text-indent: 0;
-    margin: 0.25rem;
 }
 
-.button:hover, .button_homepage:hover {
+.button_homepage:hover {
     box-shadow: -7px -7px 20px 0px #fff9,
     -4px -4px 5px 0px #fff9,
     7px 7px 20px 0px #0002,
     4px 4px 5px 0px #0001;
 }
 
-.button:hover {
-    background-color: #f1b24a;
-    transition-duration: 0.4s;
+.button_removing {
+    padding: 0;
+    height: 1rem;
+}
+
+.button_removing:hover {
+    font-weight: bold;
 }
 
 .table {
@@ -290,4 +293,59 @@ footer {
     font-size: 13px;
     color: #daded4;
     margin-bottom: 0;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 0.5rem;
+}
+
+.about-section {
+    padding: 3.2rem;
+    text-align: center;
+    background-color: #a3bcb6;
+}
+
+.container-about {
+    padding: 0 1rem;
+}
+
+.container-about::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    box-sizing: inherit;
+}
+
+.title {
+    color: grey;
+}
+
+.button-about {
+    border: 0.125rem solid #000;
+    outline: 0;
+    display: inline-block;
+    padding: 0.5rem;
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button-about:hover {
+    background-color: #f1b24a;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
 }

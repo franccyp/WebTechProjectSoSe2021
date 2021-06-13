@@ -11,23 +11,23 @@ app.component('dynamic_list', {
     },
     template: `
     <div class="container">
-    <h1 class="title">Add new Shopping Lists!</h1>
+    <h1 class="title">Add a new Shopping List!</h1>
     <p> List Name: <input class="inputbox" v-model="list_name" placeholder="list name"/></p>
     <p> List Author: <input class="inputbox" v-model="author" placeholder="list author"/></p>
     
-        <h3>added List Items: </h3>
+        <h3>added Items: </h3>
         <tr colspan="2" class="table" v-for="item in list_items">
             <td>
                 <h4>{{item}}</h4>
             </td>
             <td>
-                <button class="button"  type="button" @click="list_items.pop(item)">entfernen</button>
+                <button class="button button_removing"  type="button" @click="list_items.pop(item)">Remove</button>
             </td>    
         </tr>
-        <p> New Item: <input class="inputbox" v-model="itemName" placeholder="add a new Item"/> <button class="button"  type="button" @click="list_items.push(itemName)">Item hinzufügen</button></p>
+        <p> New Item: <input class="inputbox" v-model="itemName" placeholder="add a new Item"/> <button class="button button_webpage"  type="button" @click="list_items.push(itemName)">Add item</button></p>
         
         <div class="buttons">
-        <p><button class="button"  type="button" @click="savelist">Submit</button> <button class="button" type="button" @click="reset_inputfields">Reset</button></p>
+        <p><button class="button button_webpage"  type="button" @click="savelist">Submit</button> <button class="button button_webpage" type="button" @click="reset_inputfields">Reset</button></p>
         </div>
         </div>
     `,

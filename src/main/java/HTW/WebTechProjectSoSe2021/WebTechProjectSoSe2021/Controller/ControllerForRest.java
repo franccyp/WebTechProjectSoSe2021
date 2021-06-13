@@ -79,7 +79,7 @@ public class ControllerForRest {
     }
 
     //create a shopping list through a userform
-    @PostMapping("/shoppinglists/createlist")
+    @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/createlist")
     public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO) {
         ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, listDTO.author);
         var it = listDTO.list_items;
