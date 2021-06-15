@@ -2,6 +2,7 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -25,26 +26,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                // public pages
-//                .antMatchers(
-//                        HttpMethod.GET,
-//                        Endpoints.Site.INDEX,
-//                        Endpoints.Site.SLASH_INDEX
-//                ).permitAll()
-//                // static resources
-//                .antMatchers(
-//                        "/css/**",
-//                        "/pictures/**",
-//                        "/js/**"
-//                ).permitAll()
-//                .anyRequest().authenticated()
-//                // send the user back to the root page when they logout
-//                .and().logout().logoutSuccessUrl("/?logout").and()
-//                .oauth2Client().and().oauth2Login();
+        http.authorizeRequests()
+                // public pages
+                .antMatchers(
+                        HttpMethod.GET,
+                        Endpoints.Site.INDEX,
+                        Endpoints.Site.SLASH_INDEX,
+                        Endpoints.Site.ABOUT
+                ).permitAll()
+                // static resources
+                .antMatchers(
+                        "/css/**",
+                        "/pictures/**",
+                        "/js/**"
+                ).permitAll()
+                .anyRequest().authenticated()
+                // send the user back to the root page when they logout
+                .and().logout().logoutSuccessUrl("/?logout").and()
+                .oauth2Client().and().oauth2Login().and()
+                .csrf().disable();
 
 
         //damit post anfragen durchgehen
-        http.authorizeRequests().anyRequest().authenticated().and().oauth2Login().and().csrf().disable();
+//        http.authorizeRequests().anyRequest().authenticated().and().oauth2Login().and().csrf().disable();
     }
 }

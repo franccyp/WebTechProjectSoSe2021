@@ -80,8 +80,8 @@ public class ControllerForRest {
 
     //create a shopping list through a userform
     @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/createlist")
-    public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO) {
-        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, listDTO.author);
+    public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO,@AuthenticationPrincipal OidcUser author) {
+        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, author.getGivenName());
         var it = listDTO.list_items;
         it.forEach(item -> {
                     String itemName = item;
