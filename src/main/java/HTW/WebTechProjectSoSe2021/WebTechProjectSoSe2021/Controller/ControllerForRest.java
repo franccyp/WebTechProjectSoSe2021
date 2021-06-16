@@ -2,7 +2,6 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Config.Endpoints;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ItemEntity;
-import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListDTO;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ResourceNotFoundException;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService;
@@ -78,20 +77,21 @@ public class ControllerForRest {
 
     }
 
+    //problem mit author
     //create a shopping list through a userform
-    @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/createlist")
-    public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO) {
-        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, listDTO.author);
-        var it = listDTO.list_items;
-        it.forEach(item -> {
-                    String itemName = item;
-                    ItemEntity listItem = new ItemEntity(itemName);
-                    shoppingList.addListItem(listItem);
-                }
-        );
-        shoppingListService.saveList(shoppingList);
-        return ResponseEntity.ok(shoppingList);
-    }
+//    @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/createlist")
+//    public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO) {
+//        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name);
+//        var it = listDTO.list_items;
+//        it.forEach(item -> {
+//                    String itemName = item;
+//                    ItemEntity listItem = new ItemEntity(itemName);
+//                    shoppingList.addListItem(listItem);
+//                }
+//        );
+//        shoppingListService.saveList(shoppingList);
+//        return ResponseEntity.ok(shoppingList);
+//    }
 
 
 }

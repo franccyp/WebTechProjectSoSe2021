@@ -56,8 +56,7 @@ public class ControllerForTemplates {
     //create a shopping list through a userform
     @PostMapping(path = Endpoints.Site.LIST)
     public ModelAndView createShoppingList(@AuthenticationPrincipal OidcUser author, Model model, @RequestBody ShoppingListDTO listDTO) {
-        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, listDTO.author);
-        shoppingList.setAuthor(author.getGivenName());
+        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, author.getGivenName());
         var it = listDTO.list_items;
         it.forEach(item -> {
                     String itemName = item;
