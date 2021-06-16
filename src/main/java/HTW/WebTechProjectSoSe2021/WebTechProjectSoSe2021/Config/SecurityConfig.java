@@ -27,27 +27,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                // public pages
+                // allow anonymous access to the root page
                 .antMatchers(
                         HttpMethod.GET,
                         Endpoints.Site.INDEX,
                         Endpoints.Site.SLASH_INDEX,
                         Endpoints.Site.ABOUT
                 ).permitAll()
+
                 // static resources
                 .antMatchers(
                         "/css/**",
                         "/pictures/**",
                         "/js/**"
                 ).permitAll()
+
+                // all other requests
                 .anyRequest().authenticated()
-                // send the user back to the root page when they logout
-                .and().logout().logoutSuccessUrl("/?logout").and()
-                .oauth2Client().and().oauth2Login().and()
-                .csrf().disable();
 
+                // After we logout, redirect to root page, by default Spring will send you to /login?logout
+                .and().logout().logoutSuccessUrl("/?logout")
 
-        //damit post anfragen durchgehen
-//        http.authorizeRequests().anyRequest().authenticated().and().oauth2Login().and().csrf().disable();
+                // RP-initiated logout
+                .and().logout().logoutSuccessHandler(oidcLogoutSuccessHandler())
+
+                // enable OAuth2/OIDC
+                .and().oauth2Client().and().oauth2Login()
+
+                .and().csrf().disable();
+
     }
 }
