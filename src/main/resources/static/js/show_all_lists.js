@@ -2,13 +2,15 @@ export default {
 
     data() {
         return {
-            shopping_lists: []
+            shopping_lists: [],
+            search: ''
         };
     },
     template: `
 <h1 class="shopping_list_title">Here are all the shopping lists created</h1>     
+<input class="inputbox searchbar" type="text" v-model="search" placeholder="search list by Title"/>
 <div class="shopping_list_body">
-            <ul class="shopping_list" v-for="shopping_list in shopping_lists">
+            <ul class="shopping_list" v-for="shopping_list in filtered_lists">
                     <li> <text class="slist_small_title">{{shopping_list.list_name}}</text> <button class="slist_small_button" @click="delete_list(shopping_list.list_id)"> ✖ </button> </li>  
                     <li>          
                         <div>
@@ -28,6 +30,13 @@ export default {
             </ul>
 </div>
     `,
+    computed: {
+        filtered_lists() {
+            return this.shopping_lists.filter(shopping_list => {
+                return shopping_list.list_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+            })
+        }
+    },
     methods: {
         redirect_to_create_list() {
             window.location.href = "/createlist"

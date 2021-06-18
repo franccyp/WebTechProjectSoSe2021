@@ -383,6 +383,11 @@ p.about{
     color: #2f322d;
 }
 
+.searchbar {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
 
 .slist_small_title {
     max-width: 70%;
@@ -393,10 +398,12 @@ p.about{
     transition: all 0.3s ease;
     cursor: pointer;
     background: transparent;
+
 }
 
 .slist_small_button:hover {
     font-weight: 750;
+    color: #8e1a1a;
 }
 
 .shopping_list:before {
