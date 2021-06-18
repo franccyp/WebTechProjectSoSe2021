@@ -55,7 +55,7 @@ public class ControllerForTemplates {
 
     //create a shopping list through a userform
     @PostMapping(path = Endpoints.Site.LIST)
-    public ModelAndView createShoppingList(@AuthenticationPrincipal OidcUser author, Model model, @RequestBody ShoppingListDTO listDTO) {
+    public String createShoppingList(@AuthenticationPrincipal OidcUser author, Model model, @RequestBody ShoppingListDTO listDTO) {
         ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name, author.getGivenName());
         var it = listDTO.list_items;
         it.forEach(item -> {
@@ -66,15 +66,14 @@ public class ControllerForTemplates {
         );
         shoppingListService.saveList(shoppingList);
         model.addAttribute("shoppingList", shoppingList);
-        //return "redirect:/createlist";
-        return new ModelAndView(ViewNames.POST_LIST);
+        return "redirect:/createlist";
     }
 
     @GetMapping(path = Endpoints.Site.ALL_LISTS)
     public ModelAndView listsTable(@AuthenticationPrincipal OidcUser author,Model model) {
         List<ShoppingListEntity> slists = shoppingListService.findAll(author.getGivenName());
         model.addAttribute("slists", slists);
-        //return "redirect:/createlist";//"listresult";
+        //return "redirect:/createlist";
         return new ModelAndView(ViewNames.ALL_LISTS);
     }
 

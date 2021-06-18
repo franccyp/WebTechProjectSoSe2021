@@ -1,27 +1,61 @@
-const app = Vue.createApp({})
-
-app.component('show_all_lists', {
+export default {
 
     data() {
-        return {};
+        return {
+            shopping_lists: []
+        };
     },
     template: `
-    
+<h1 class="shopping_list_title">Here are all the shopping lists created</h1>     
+<div class="shopping_list_body">
+            <ul class="shopping_list" v-for="shopping_list in shopping_lists">
+                    <li> <text class="slist_small_title">{{shopping_list.list_name}}</text> <button class="slist_small_button" @click="delete_list(shopping_list.list_id)"> ✖ </button> </li>  
+                    <li>          
+                        <div>
+                            <ul v-for="list_item in shopping_list.listItems">
+                                <li class="slist_items">{{list_item.item_name}}</li>
+                            </ul>
+                        </div>
+                    </li>
+            </ul>
+            <ul class="shopping_list">
+            <li><button class="slist_small_button"  type="button" @click="redirect_to_create_list">Create a new List!</button></li> 
+                <ul>
+                   <li class="slist_items">...</li>   
+                   <li class="slist_items">...</li>
+                   <li class="slist_items">...</li>      
+                </ul>
+            </ul>
+</div>
     `,
     methods: {
-
-        deleteList() {
-            axios.post('/createlist', {
-                list_name: this.list_name,
-                list_items: this.list_items,
-            })
+        redirect_to_create_list() {
+            window.location.href = "/createlist"
+        },
+        delete_list(list_id) {
+            let delete_url = '/shoppinglists/remove/' + list_id
+            axios.post(delete_url)
                 .then((response) => {
-                    this.reset_inputfields()
+                    this.load_lists();
+                    Swal.fire('List deleted!');
                 }, (error) => {
-                    console.log('could not save Product!');
+                    Swal.fire('could not delete list!');
+                    console.log('could not delete list!');
                 });
+        },
+        load_lists() {
+            fetch('/shoppinglists').then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            }).then((data) => {
+                this.shopping_lists = data;
+            }, (error) => {
+                console.log('could not load lists');
+            });
         }
+    },
+    mounted: function () {
+        this.load_lists();
     }
-})
-
-app.mount('#show_all_lists')
+}

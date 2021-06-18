@@ -19,7 +19,7 @@ export default {
                 <button class="button button_removing"  type="button" @click="list_items.pop(item)">Remove</button>
             </td>    
         </tr>
-        <p> New Item: <input class="inputbox" v-model="itemName" placeholder="add a new Item"/> <button class="button button_webpage"  type="button" @click="list_items.push(itemName)">Add item</button></p>
+        <p> New Item: <input class="inputbox" v-model="itemName" placeholder="add a new Item" @keyup.enter="list_items.push(itemName)"/> <button class="button button_webpage"  type="button" @click="list_items.push(itemName)">Add item</button></p>
         
         <div class="buttons">
         <p><button class="button button_webpage"  type="button" @click="save_list">Submit</button> <button class="button button_webpage" type="button" @click="reset_inputfields">Reset</button></p>
@@ -30,11 +30,12 @@ export default {
         reset_inputfields() {
             this.list_items = [],
                 this.itemName = '',
+                // this.author = '',
                 this.list_name = ''
 
         },
         save_list() {
-            if (this.list_name !== '' || this.list_items !== []) {
+            if (this.list_name !== '' && this.list_items !== []) {
                 axios.post('/createlist', {
                     list_name: this.list_name,
                     list_items: this.list_items,
@@ -44,7 +45,7 @@ export default {
                         this.show_save_dialog()
                     }, (error) => {
                         Swal.fire('Something went wrong!')
-                        console.log('could not save Product!');
+                        console.log('could not save List!');
                     });
             } else {
                 Swal.fire('The List is empty!')

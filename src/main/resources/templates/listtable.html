@@ -9,36 +9,8 @@
 </head>
 
 <body>
-<div class="container">
-    <h1>Here are all the shopping lists created</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="table_header">Shopping List ID</th>
-            <th class="table_header">List Name</th>
-            <th class="table_header">Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${slists.isEmpty()}">
-            <td class="table_empty" colspan="4" rowspan="2">No lists available</td>
-        </tr>
-        <tr th:each="shoppingList : ${slists}">
-            <td class="table_details"><span th:text="${shoppingList.list_id}">Shopping List ID</span></td>
-            <td class="table_details"><span th:text="${shoppingList.list_name}">List Name</span></td>
-            <td class="table_details">
-                <form action="#" th:action="@{'/singlelistview/{id}'(id=${shoppingList.list_id})}" th:method="get">
-                    <button class="button" type="submit">View</button>
-                </form>
-                <form action="#" th:action="@{'/shoppinglists/remove/{id}'(id=${shoppingList.list_id})}"
-                      th:method="post">
-                    <button class="button" type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-<a th:href="@{/createlist}">Create a new shopping list!</a>
+<div id="app">
+    <show_all_lists></show_all_lists>
 </div>
 </body>
 </html>

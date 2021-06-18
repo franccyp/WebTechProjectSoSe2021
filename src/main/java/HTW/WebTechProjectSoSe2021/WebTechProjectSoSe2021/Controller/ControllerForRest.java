@@ -7,7 +7,6 @@ import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ResourceNotFo
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -25,15 +24,23 @@ public class ControllerForRest {
     @Autowired
     private ItemService itemService;
 
-    //list out all available shopping lists
-    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{author}")
-    public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists(@PathVariable(value = "author") @AuthenticationPrincipal OidcUser author) {
+    //list out all available shopping lists from an user
+//    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{author}")
+//    public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists(@PathVariable(value = "author") @AuthenticationPrincipal OidcUser author) {
+//        var allLists = shoppingListService.findAll(author.getGivenName());
+//        return ResponseEntity.ok(allLists);
+//    }
+
+    //list out all available shopping lists from an user
+    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST)
+    public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists(@AuthenticationPrincipal OidcUser author) {
         var allLists = shoppingListService.findAll(author.getGivenName());
         return ResponseEntity.ok(allLists);
     }
 
+
     //list out the particular shopping list with the given id, if not found, exception is thrown
-    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{id}")
+    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST + "/{id}")
     public ResponseEntity<ShoppingListEntity> getShoppingListById(@PathVariable(value = "id") Long shoppingListId)
             throws ResourceNotFoundException {
         ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
@@ -56,11 +63,11 @@ public class ControllerForRest {
 
     //remove a shopping list with input id from db
     @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String deleteList(@PathVariable("id") HttpStatus httpResponse, Long shoppingListId) throws ResourceNotFoundException {
+    public String deleteList(@PathVariable("id") Long shoppingListId) throws ResourceNotFoundException {
         try {
             itemService.deleteByShoppingListId(shoppingListId);
             shoppingListService.deleteById(shoppingListId);
-            return "redirect:/alllists"; //ResponseEntity.ok().build();
+            return "redirect:/alllists";
         } catch (Exception e) {
             throw new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank.");
         }
@@ -74,24 +81,5 @@ public class ControllerForRest {
         } catch (Exception e) {
             throw new ResourceNotFoundException("Item with the id : " + itemId + " is not available in the shopping list.");
         }
-
     }
-
-    //problem mit author
-    //create a shopping list through a userform
-//    @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/createlist")
-//    public ResponseEntity<ShoppingListEntity> createShoppingList(@RequestBody ShoppingListDTO listDTO) {
-//        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name);
-//        var it = listDTO.list_items;
-//        it.forEach(item -> {
-//                    String itemName = item;
-//                    ItemEntity listItem = new ItemEntity(itemName);
-//                    shoppingList.addListItem(listItem);
-//                }
-//        );
-//        shoppingListService.saveList(shoppingList);
-//        return ResponseEntity.ok(shoppingList);
-//    }
-
-
 }
