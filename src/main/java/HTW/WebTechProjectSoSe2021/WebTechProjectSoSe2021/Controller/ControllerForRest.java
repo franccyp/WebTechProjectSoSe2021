@@ -73,7 +73,7 @@ public class ControllerForRest {
         }
     }
 
-    @RequestMapping(path = Endpoints.Rest.ITEM+"/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(path = Endpoints.Rest.ITEM + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<ItemEntity> deleteItem(@PathVariable("id") Long itemId) throws ResourceNotFoundException {
         try {
             itemService.deleteById(itemId);
@@ -81,5 +81,16 @@ public class ControllerForRest {
         } catch (Exception e) {
             throw new ResourceNotFoundException("Item with the id : " + itemId + " is not available in the shopping list.");
         }
+    }
+
+    //update a particular item
+    @PutMapping(path = Endpoints.Rest.ITEM + "/updatename/{id}/{itemName}")
+    public ResponseEntity<ItemEntity> updateItemName(@PathVariable(value = "id") Long itemId,
+                                                     @PathVariable(value = "itemName") String itemName) throws ResourceNotFoundException {
+        ItemEntity item = itemService.findById(itemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Item with the id : " + itemId + " is not available in the databank."));
+        item.setItem_name(itemName);
+        final ItemEntity updatedItem = itemService.saveListItem(item);
+        return ResponseEntity.ok(updatedItem);
     }
 }

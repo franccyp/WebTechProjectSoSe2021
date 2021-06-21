@@ -15,7 +15,7 @@ export default {
                     <li>          
                         <div>
                             <ul v-for="list_item in shopping_list.listItems">
-                                <li class="slist_items">{{list_item.item_name}}</li>
+                                <li class="slist_items">{{list_item.item_name}}  <button class="slist_small_button" @click="delete_item(list_item)"> ✖ </button> <button class="slist_small_button" @click="check_item(list_item)">  ✔ </button> </li>
                             </ul>
                         </div>
                     </li>
@@ -52,6 +52,32 @@ export default {
                     console.log('could not delete list!');
                 });
         },
+        delete_item(item) {
+            let delete_url = '/item/remove/' + item.item_id
+            axios.post(delete_url)
+                .then((response) => {
+                    this.load_lists();
+                }, (error) => {
+                    Swal.fire('could not delete item!');
+                    console.log('could not delete item!');
+                });
+        },
+        check_item(item) {
+            let checked_itemName = item.item_name
+                .split('')
+                .map(char => char + '\u0336')
+                .join('')
+            console.log(checked_itemName)
+            let url = '/item/updatename/' + item.item_id + '/' + checked_itemName
+            axios.put(url, {
+                itemName: checked_itemName
+            }).then((updatedItem) => {
+                this.load_lists();
+            }, (error) => {
+                Swal.fire('could not check item!');
+                console.log('could not check item!');
+            });
+        },
         load_lists() {
             fetch('/shoppinglists').then((response) => {
                 if (response.ok) {
@@ -63,6 +89,7 @@ export default {
                 console.log('could not load lists');
             });
         }
+
     },
     mounted: function () {
         this.load_lists();
