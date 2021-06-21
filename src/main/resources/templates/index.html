@@ -6,9 +6,24 @@
 <section class="one">
   <h1 class="startpage">ShopChop saves lives</h1>
   <p class="homepage">Life is too short to worry about shopping lists. Live longer with us.</p>
-  <form action="#" th:action="@{/createlist}">
-    <button class="button button_homepage" type="submit">Get Started</button>
-  </form>
+  <button class="button button_homepage" onclick="launchDialog()">Get Started</button>
+  <script>
+    function launchDialog() {
+      Swal.fire({
+        title: "What's on your Mind?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Add new list',
+        cancelButtonText: 'show my lists'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/createlist"
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          window.location.href = "/alllists"
+        }
+      })
+    }
+  </script>
 </section>
 </body>
 </html>
