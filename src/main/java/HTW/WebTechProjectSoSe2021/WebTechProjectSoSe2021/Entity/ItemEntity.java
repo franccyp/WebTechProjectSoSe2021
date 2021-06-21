@@ -43,6 +43,4 @@ public class ItemEntity {
     public void setList_id(Long list_id) {
         this.list_id = list_id;
     }
-
-
 }

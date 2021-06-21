@@ -24,20 +24,12 @@ public class ControllerForRest {
     @Autowired
     private ItemService itemService;
 
-    //list out all available shopping lists from an user
-//    @GetMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{author}")
-//    public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists(@PathVariable(value = "author") @AuthenticationPrincipal OidcUser author) {
-//        var allLists = shoppingListService.findAll(author.getGivenName());
-//        return ResponseEntity.ok(allLists);
-//    }
-
-    //list out all available shopping lists from an user
+    //list out all available shopping lists from a user
     @GetMapping(path = Endpoints.Rest.SHOPPING_LIST)
     public ResponseEntity<List<ShoppingListEntity>> getAllShoppingLists(@AuthenticationPrincipal OidcUser author) {
         var allLists = shoppingListService.findAll(author.getGivenName());
         return ResponseEntity.ok(allLists);
     }
-
 
     //list out the particular shopping list with the given id, if not found, exception is thrown
     @GetMapping(path = Endpoints.Rest.SHOPPING_LIST + "/{id}")
@@ -48,7 +40,7 @@ public class ControllerForRest {
         return ResponseEntity.ok().body(shoppingList);
     }
 
-    //update a particular shopping list (its details) with the input id //doesnt really work
+    //update a particular shopping list (its details) with the input id
     @PutMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{id}")
     public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
                                                                   @Validated @RequestBody ShoppingListEntity listDetails) throws ResourceNotFoundException {
@@ -73,6 +65,7 @@ public class ControllerForRest {
         }
     }
 
+    //remove an item from a shopping list
     @RequestMapping(path = Endpoints.Rest.ITEM + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<ItemEntity> deleteItem(@PathVariable("id") Long itemId) throws ResourceNotFoundException {
         try {
@@ -83,7 +76,7 @@ public class ControllerForRest {
         }
     }
 
-    //update a particular item
+    //update a particular item on a shopping list
     @PutMapping(path = Endpoints.Rest.ITEM + "/updatename/{id}/{itemName}")
     public ResponseEntity<ItemEntity> updateItemName(@PathVariable(value = "id") Long itemId,
                                                      @PathVariable(value = "itemName") String itemName) throws ResourceNotFoundException {

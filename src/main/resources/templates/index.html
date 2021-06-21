@@ -10,11 +10,11 @@
   <script>
     function launchDialog() {
       Swal.fire({
-        title: "What's on your Mind?",
+        title: "What's on your mind?",
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'Add new list',
-        cancelButtonText: 'show my lists'
+        cancelButtonText: 'Show my lists'
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = "/createlist"

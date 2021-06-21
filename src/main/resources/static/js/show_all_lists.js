@@ -43,14 +43,30 @@ export default {
         },
         delete_list(list_id) {
             let delete_url = '/shoppinglists/remove/' + list_id
-            axios.post(delete_url)
-                .then((response) => {
-                    this.load_lists();
-                    Swal.fire('List deleted!');
-                }, (error) => {
-                    Swal.fire('could not delete list!');
-                    console.log('could not delete list!');
-                });
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post(delete_url)
+                        .then((response) => {
+                            this.load_lists();
+                        }, (error) => {
+                            Swal.fire('Unable to delete list!');
+                            console.log('Unable to delete list!');
+                        });
+                    Swal.fire(
+                        'Deleted!',
+                        'Your list has been deleted.',
+                        'success'
+                    )
+                }
+            })
         },
         delete_item(item) {
             let delete_url = '/item/remove/' + item.item_id
@@ -58,8 +74,8 @@ export default {
                 .then((response) => {
                     this.load_lists();
                 }, (error) => {
-                    Swal.fire('could not delete item!');
-                    console.log('could not delete item!');
+                    Swal.fire('Unable to delete item!');
+                    console.log('Unable to delete item!');
                 });
         },
         check_item(item) {
@@ -74,8 +90,8 @@ export default {
             }).then((updatedItem) => {
                 this.load_lists();
             }, (error) => {
-                Swal.fire('could not check item!');
-                console.log('could not check item!');
+                Swal.fire('Unable to check item out of the list!');
+                console.log('Unable to check item out of the list!');
             });
         },
         load_lists() {
@@ -86,7 +102,7 @@ export default {
             }).then((data) => {
                 this.shopping_lists = data;
             }, (error) => {
-                console.log('could not load lists');
+                console.log('Unable to load lists');
             });
         }
 

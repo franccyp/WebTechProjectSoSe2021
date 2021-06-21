@@ -15,6 +15,4 @@ public class ShoppingListDTO {
         this.list_name = list_name;
         this.list_items = list_items;
     }
-
-
 }

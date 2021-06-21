@@ -30,9 +30,7 @@ public class ShoppingListEntity {
         this.author = author;
     }
 
-    public ShoppingListEntity() {
-
-    }
+    public ShoppingListEntity() { }
 
     //Getter for the id. It is not possible to set a new id for the list after its constructed.
     public Long getList_id() {

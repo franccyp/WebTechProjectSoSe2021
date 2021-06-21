@@ -31,25 +31,30 @@ export default {
     `,
     methods: {
         sendEmail(e) {
-            try {
-                emailjs.sendForm('shopchop_contact_service', 'contact_form', e.target, 'user_cT3E059w6mjwI1ubNkYGQ', {
-                    name: this.name,
-                    email: this.email,
-                    message: this.message
-                })
-                    .then((result) => {
-                    console.log('SUCCESS!', result.status, result.text);
+            emailjs.sendForm('shopchop_contact_service', 'contact_form', e.target, 'user_cT3E059w6mjwI1ubNkYGQ', {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            })
+                .then((response) => {
+                    this.show_sent_dialog()
+                    console.log('SUCCESS!');
                 }, (error) => {
+                    Swal.fire('Something went wrong!')
                     console.log('FAILED...', error);
                 });
-                console.log('it works!!!')
-            } catch (error) {
-                console.log({error})
-            }
+
             // Reset form field
             this.name = ''
             this.email = ''
             this.message = ''
         },
+        show_sent_dialog() {
+            Swal.fire({
+                title: 'Email has been sent!',
+                text: 'Check your inbox to view our reply! Thank you.',
+                icon: 'success'
+            })
+        }
     }
 }

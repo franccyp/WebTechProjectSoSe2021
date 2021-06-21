@@ -11,7 +11,6 @@ public class Endpoints {
         public static final String INDEX = "/index";
         public static final String SLASH_INDEX = "/";
         public static final String LIST = "/createlist";
-        public static final String SINGLE_LIST = "/singlelistview";
         public static final String ALL_LISTS = "/alllists";
         public static final String ABOUT = "/about";
         public static final String CONTACT = "/contact";

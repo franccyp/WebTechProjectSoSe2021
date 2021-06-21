@@ -24,6 +24,8 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="#" th:src="@{/js/dynamic_list_creation.js}" defer></script>
   <script type="module" src="#" th:src="@{/js/show_all_lists.js}" defer></script>
   <script type="module" src="#" th:src="@{/js/contact_form.js}" defer></script>
@@ -31,6 +33,8 @@
 
 </head>
 <body>
+
+<!-- Header -->
 <header>
   <div class="header_and_nav">
     <a class="app_name" th:href="@{/index}"><img class="logo" th:src="@{/pictures/shopping_list.png}">ShopChop</a>
@@ -50,18 +54,18 @@
   </div>
 </header>
 
+<!-- Main Container -->
 <main role="main" class="content-wrapper mt-3">
   <!--/*@thymesVar id="template" type="templates"*/-->
   <section th:include="${template}"></section>
 </main>
-<!--    <footer class="container">-->
 
 <!-- Footer -->
 <footer class="footer-basic">
   <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
   <ul class="list-inline">
     <li class="list-inline-item"><a th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}">Home</a></li>
-    <li class="list-inline-item"><a href="#">Services</a></li>
+    <li class="list-inline-item"><a th:href="@{/contact}" th:classappend="${#request.requestURI == '/contact' ? 'active':''}">Contact</a></li>
     <li class="list-inline-item"><a th:href="@{/about}" th:classappend="${#request.requestURI == '/about' ? 'active':''}">About</a></li>
     <li class="list-inline-item"><a href="#">Terms</a></li>
     <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
@@ -69,7 +73,5 @@
   <p class="copyright">ShopChop © 2021</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

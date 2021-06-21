@@ -1,5 +1,5 @@
-HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ShoppingListRepository.java
- HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ShoppingListRepository
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Controller/ControllerForRest.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller.ControllerForRest
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Entity/ShoppingListDTO.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListDTO
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Entity/ShoppingListEntity.java
@@ -28,5 +28,5 @@ HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Service/ItemService.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService
 HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ItemRepository.java
  HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ItemRepository
-HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Controller/ControllerForRest.java
- HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller.ControllerForRest
+HTW/WebTechProjectSoSe2021/WebTechProjectSoSe2021/Repo/ShoppingListRepository.java
+ HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Repo.ShoppingListRepository

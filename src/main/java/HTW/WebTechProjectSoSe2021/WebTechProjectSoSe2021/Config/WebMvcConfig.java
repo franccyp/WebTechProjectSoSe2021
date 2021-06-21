@@ -20,7 +20,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController(Endpoints.Site.ALL_LISTS).setViewName(ViewNames.ALL_LISTS);
         registry.addViewController(Endpoints.Site.LIST).setViewName(ViewNames.LIST);
         registry.addViewController(Endpoints.Site.LIST).setViewName(ViewNames.POST_LIST);
-        registry.addViewController(Endpoints.Site.SINGLE_LIST).setViewName(ViewNames.SINGLE_LIST);
         registry.addViewController(Endpoints.Site.ABOUT).setViewName(ViewNames.ABOUT);
         registry.addViewController(Endpoints.Site.CONTACT).setViewName(ViewNames.CONTACT);
     }

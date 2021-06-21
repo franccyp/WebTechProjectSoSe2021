@@ -45,7 +45,7 @@ export default {
                         this.show_save_dialog()
                     }, (error) => {
                         Swal.fire('Something went wrong!')
-                        console.log('could not save List!');
+                        console.log('Unable to save List!');
                     });
             } else {
                 Swal.fire('The List is empty!')
@@ -53,12 +53,12 @@ export default {
         },
         show_save_dialog() {
             Swal.fire({
-                title: 'Shopping List added!',
-                text: 'Shopping List was added successfully!',
+                title: 'Shopping list added!',
+                text: 'Shopping list was added successfully!',
                 icon: 'success',
                 showCancelButton: true,
                 confirmButtonText: 'Add another list',
-                cancelButtonText: 'show all lists'
+                cancelButtonText: 'Show all my lists'
             }).then((result) => {
                 if (result.dismiss === Swal.DismissReason.cancel) {
                     window.location.href = "/alllists"

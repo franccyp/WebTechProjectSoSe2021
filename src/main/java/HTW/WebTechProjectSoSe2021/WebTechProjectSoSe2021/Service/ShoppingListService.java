@@ -49,7 +49,6 @@ public class ShoppingListService {
 
     //determine the total number of shopping lists available
     public Long count() {
-
         return shopRepository.count();
     }
 
