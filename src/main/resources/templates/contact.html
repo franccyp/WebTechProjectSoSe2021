@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::body})}" lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <title>Contact Us</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/form_stylesheet.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+
+  <script src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script type="module" src="#" th:src="@{/js/contact_form.js}" defer></script>
+  <script type="module" src="#" th:src="@{/js/main.js}" defer></script>
+</head>
+<body>
+
+<div id="app">
+  <contact_form></contact_form>
+</div>
+
+</body>
+</html>

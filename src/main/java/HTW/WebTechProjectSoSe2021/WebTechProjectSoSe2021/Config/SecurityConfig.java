@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         HttpMethod.GET,
                         Endpoints.Site.INDEX,
                         Endpoints.Site.SLASH_INDEX,
-                        Endpoints.Site.ABOUT
+                        Endpoints.Site.ABOUT,
+                        Endpoints.Site.CONTACT
                 ).permitAll()
 
                 // static resources

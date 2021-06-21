@@ -23,24 +23,27 @@
   <script src="https://unpkg.com/vue@next" defer></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
   <script type="module" src="#" th:src="@{/js/dynamic_list_creation.js}" defer></script>
   <script type="module" src="#" th:src="@{/js/show_all_lists.js}" defer></script>
+  <script type="module" src="#" th:src="@{/js/contact_form.js}" defer></script>
   <script type="module" src="#" th:src="@{/js/main.js}" defer></script>
+
 </head>
 <body>
 <header>
   <div class="header_and_nav">
-    <a class="app_name" th:href="@{/createlist}"><img class="logo" th:src="@{/pictures/shopping_list.png}">ShopChop</a>
+    <a class="app_name" th:href="@{/index}"><img class="logo" th:src="@{/pictures/shopping_list.png}">ShopChop</a>
     <a class="nav_button" th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}">Home</a>
     <a class="nav_button" th:href="@{/contact}" th:classappend="${#request.requestURI == '/contact' ? 'active':''}">Contact</a>
     <a class="nav_button" th:href="@{/about}" th:classappend="${#request.requestURI == '/about' ? 'active':''}">About</a>
     <div class="header-right">
       <div sec:authorize="!isAuthenticated()">
-        <a class="btn btn-outline-warning" th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
+        <a class="btn btn-warning" th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/listcreation' ? 'active':''}">Login</a>
       </div>
       <div sec:authorize="isAuthenticated()">
         <form id="logout-form" method="POST" action="#" th:action="@{/logout}">
-          <button type="submit" class="btn btn-outline-warning">Logout</button>
+          <button type="submit" class="btn btn-warning">Logout</button>
         </form>
       </div>
     </div>

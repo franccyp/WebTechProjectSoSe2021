@@ -40,6 +40,11 @@ public class ControllerForTemplates {
         return new ModelAndView(ViewNames.ABOUT);
     }
 
+    @GetMapping(path = Endpoints.Site.CONTACT)
+    public ModelAndView showContact(){
+        return new ModelAndView(ViewNames.CONTACT);
+    }
+
     @GetMapping(path = Endpoints.Site.SINGLE_LIST + "/{id}")
     public ModelAndView listsItemsFromList(Model model, @PathVariable("id") Long shoppingListId) {
         List<ItemEntity> shoppingItems = itemService.findByShoppingListId(shoppingListId);
