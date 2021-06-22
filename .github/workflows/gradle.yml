@@ -23,5 +23,11 @@ jobs:
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Run Backend Tests
+      env:
+        JDBC_DATABASE_URL: ${{ secrets.JDBC_DATABASE_URL }}
+        JDBC_DATABASE_USERNAME: ${{ secrets.JDBC_DATABASE_USERNAME }}
+        JDBC_DATABASE_PASSWORD: ${{ secrets.JDBC_DATABASE_PASSWORD }}
+        OKTA_CLIENT_ID: ${{ secrets.OKTA_CLIENT_ID }}
+        OKTA_CLIENT_SECRET: ${{ secrets.OKTA_CLIENT_SECRET }}
+      run: ./gradlew test

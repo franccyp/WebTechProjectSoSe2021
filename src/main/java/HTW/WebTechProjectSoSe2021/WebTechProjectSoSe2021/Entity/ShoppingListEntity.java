@@ -19,11 +19,9 @@ public class ShoppingListEntity {
     @Column(name = "author", nullable = false)
     private String author;
 
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
     private List<ItemEntity> listItems = new ArrayList<ItemEntity>();
-
 
     public ShoppingListEntity(String list_name, String author) {
         this.list_name = list_name;
