@@ -23,9 +23,8 @@ public class ShoppingListEntity {
     @JoinColumn(name = "list_id")
     private List<ItemEntity> listItems = new ArrayList<ItemEntity>();
 
-    public ShoppingListEntity(String list_name, String author) {
+    public ShoppingListEntity(String list_name) {
         this.list_name = list_name;
-        this.author = author;
     }
 
     public ShoppingListEntity() { }
