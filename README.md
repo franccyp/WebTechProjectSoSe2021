@@ -10,3 +10,5 @@ Der Benutzer kann :
 2. Eigene persönliche Einkaufslisten erstellen.
 3. Seine Einkaufslisten direkt auf der Seite speichern und verwalten.
 4. Diese Listen mit seinen Kontakten teilen, sofern diese auch Benutzer der Seite sind.
+
+
