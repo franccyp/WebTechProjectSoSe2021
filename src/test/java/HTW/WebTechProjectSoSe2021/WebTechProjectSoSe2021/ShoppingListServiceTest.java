@@ -26,9 +26,9 @@ public class ShoppingListServiceTest {
     @Test
     @DisplayName("should find shopping list through the user's name")
     void testFindByAuthorName() {
-        var s1 = new ShoppingListEntity("Monday's Food", "franccyp");
+        var s1 = new ShoppingListEntity("Monday's Food");
         s1.setAuthor("franccyp");
-        var s2 = new ShoppingListEntity("Dinner", "Kris");
+        var s2 = new ShoppingListEntity("Dinner");
         s2.setAuthor("Kris");
         doReturn(List.of(s1, s2)).when(repository).findAll();
 
