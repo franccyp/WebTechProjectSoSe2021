@@ -3,6 +3,7 @@ export default {
         return {
             list_items: [],
             list_name: '',
+            itemName: ''
         };
     },
     template: `
@@ -16,10 +17,10 @@ export default {
                 <h4>{{item}}</h4>
             </td>
             <td>
-                <button class="button button_removing"  type="button" @click="list_items.pop(item)">Remove</button>
+                <button class="button button_removing" id="removeButton" type="button" @click="list_items.pop(item)">Remove</button>
             </td>    
         </tr>
-        <p> New Item: <input class="inputbox" v-model="itemName" placeholder="add a new Item" @keyup.enter="list_items.push(itemName)"/> <button class="button button_webpage"  type="button" @click="list_items.push(itemName)">Add item</button></p>
+        <p> New Item: <input class="inputbox" id="itemName" placeholder="add a new Item" @keyup.enter="list_items.push(itemName)"/> <button class="button button_webpage" id="addItemButton" type="button" @click="list_items.push(itemName)">Add item</button></p>
         
         <div class="buttons">
         <p><button class="button button_webpage"  type="button" @click="save_list">Submit</button> <button class="button button_webpage" type="button" @click="reset_inputfields">Reset</button></p>
