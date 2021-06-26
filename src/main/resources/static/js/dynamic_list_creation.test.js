@@ -11,10 +11,9 @@ test('load template', () => {
 
 test('add an item', async () => {
     const wrapper = mount(dynamicListCreation);
-    const itemName = wrapper.find("#itemName");
-    await itemName.setValue('new item');
-    const addItemButton = wrapper.find('#addItemButton')
+    const itemName = wrapper.find('#itemName');
+    await itemName.setValue("new item");
+    const addItemButton = wrapper.find("#addItemButton");
     await addItemButton.trigger('click');
     expect(wrapper.vm.$data.list_items[0]).toBe('new item');
-
 })
