@@ -40,18 +40,18 @@ public class ControllerForRest {
         return ResponseEntity.ok().body(shoppingList);
     }
 
-    //update a particular shopping list (its details) with the input id
-    @PutMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{id}")
-    public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
-                                                                  @Validated @RequestBody ShoppingListEntity listDetails) throws ResourceNotFoundException {
-        ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
-                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
-
-        shoppingList.setList_name(listDetails.getList_name());
-        shoppingList.setAuthor(listDetails.getAuthor());
-        final ShoppingListEntity updatedList = shoppingListService.saveList(shoppingList);
-        return ResponseEntity.ok(updatedList);
-    }
+    //update a particular shopping list (its details) with the input id (i dont think we use this)
+//    @PutMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{id}")
+//    public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
+//                                                                  @Validated @RequestBody ShoppingListEntity listDetails) throws ResourceNotFoundException {
+//        ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
+//                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
+//
+//        shoppingList.setList_name(listDetails.getList_name());
+//        shoppingList.setAuthor(listDetails.getAuthor());
+//        final ShoppingListEntity updatedList = shoppingListService.saveList(shoppingList);
+//        return ResponseEntity.ok(updatedList);
+//    }
 
     //remove a shopping list with input id from db
     @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -85,5 +85,18 @@ public class ControllerForRest {
         item.setItem_name(itemName);
         final ItemEntity updatedItem = itemService.saveListItem(item);
         return ResponseEntity.ok(updatedItem);
+    }
+
+    //add new item to already made shopping list
+    @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST + "/updatelist/{id}/{itemName}", method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<ShoppingListEntity> addItem(@PathVariable(value = "id") Long shoppingListId,
+                                                      @PathVariable(value = "itemName") String itemName) throws ResourceNotFoundException {
+        ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
+                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
+
+        ItemEntity listItem = new ItemEntity(itemName);
+        shoppingList.addListItem(listItem);
+        final ShoppingListEntity updatedList = shoppingListService.saveList(shoppingList);
+        return ResponseEntity.ok(updatedList);
     }
 }

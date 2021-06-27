@@ -190,10 +190,10 @@ body {
 }
 
 .button_homepage:hover {
-    box-shadow: -7px -7px 20px 0px #fff9,
-    -4px -4px 5px 0px #fff9,
-    7px 7px 20px 0px #0002,
-    4px 4px 5px 0px #0001;
+    box-shadow: -7px -7px 20px 0 #fff9,
+    -4px -4px 5px 0 #fff9,
+    7px 7px 20px 0 #0002,
+    4px 4px 5px 0 #0001;
 }
 
 .button_removing {
@@ -361,7 +361,6 @@ p.about{
     justify-content: space-evenly;
     align-content: space-evenly;
     flex-wrap: wrap;
-
 }
 
 .shopping_list {
@@ -391,7 +390,7 @@ p.about{
     transition: all 0.3s ease;
     cursor: pointer;
     background: transparent;
-
+    margin-left: 0.5rem;
 }
 
 .slist_small_button:hover {
