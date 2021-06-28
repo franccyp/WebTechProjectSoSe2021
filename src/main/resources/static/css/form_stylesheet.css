@@ -322,6 +322,13 @@ p.about{
     background-color: #a3bcb6;
 }
 
+.img-about {
+    width: 9rem !important;
+    height: auto !important;
+    margin: 1rem !important;
+}
+
+
 .container-about {
     padding: 0 1rem;
 }

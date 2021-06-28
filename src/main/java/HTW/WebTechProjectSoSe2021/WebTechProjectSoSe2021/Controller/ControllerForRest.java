@@ -2,6 +2,7 @@ package HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Controller;
 
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Config.Endpoints;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ItemEntity;
+import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListDTO;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Entity.ShoppingListEntity;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Exception.ResourceNotFoundException;
 import HTW.WebTechProjectSoSe2021.WebTechProjectSoSe2021.Service.ItemService;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +31,22 @@ public class ControllerForRest {
         return ResponseEntity.ok(allLists);
     }
 
+    //create a shopping list through rest
+    @PostMapping(path = Endpoints.Rest.SHOPPING_LIST + "/create")
+    public ResponseEntity<ShoppingListEntity> createShoppingListRest(@AuthenticationPrincipal OidcUser author, @RequestBody ShoppingListDTO listDTO) {
+        ShoppingListEntity shoppingList = new ShoppingListEntity(listDTO.list_name);
+        shoppingList.setAuthor(author.getGivenName());
+        var it = listDTO.list_items;
+        it.forEach(item -> {
+                    String itemName = item;
+                    ItemEntity listItem = new ItemEntity(itemName);
+                    shoppingList.addListItem(listItem);
+                }
+        );
+        shoppingListService.saveList(shoppingList);
+        return ResponseEntity.ok(shoppingList);
+    }
+
     //list out the particular shopping list with the given id, if not found, exception is thrown
     @GetMapping(path = Endpoints.Rest.SHOPPING_LIST + "/{id}")
     public ResponseEntity<ShoppingListEntity> getShoppingListById(@PathVariable(value = "id") Long shoppingListId)
@@ -40,18 +56,6 @@ public class ControllerForRest {
         return ResponseEntity.ok().body(shoppingList);
     }
 
-    //update a particular shopping list (its details) with the input id (i dont think we use this)
-//    @PutMapping(path = Endpoints.Rest.SHOPPING_LIST+"/{id}")
-//    public ResponseEntity<ShoppingListEntity> updateShoppingLists(@PathVariable(value = "id") Long shoppingListId,
-//                                                                  @Validated @RequestBody ShoppingListEntity listDetails) throws ResourceNotFoundException {
-//        ShoppingListEntity shoppingList = shoppingListService.findById(shoppingListId)
-//                .orElseThrow(() -> new ResourceNotFoundException("Shopping list with the id : " + shoppingListId + " is not available in the databank."));
-//
-//        shoppingList.setList_name(listDetails.getList_name());
-//        shoppingList.setAuthor(listDetails.getAuthor());
-//        final ShoppingListEntity updatedList = shoppingListService.saveList(shoppingList);
-//        return ResponseEntity.ok(updatedList);
-//    }
 
     //remove a shopping list with input id from db
     @RequestMapping(path = Endpoints.Rest.SHOPPING_LIST + "/remove/{id}", method = {RequestMethod.GET, RequestMethod.POST})

@@ -20,7 +20,7 @@ export default {
                 <button class="button button_removing" id="removeButton" type="button" @click="list_items.pop(item)">Remove</button>
             </td>    
         </tr>
-        <p> New Item: <input class="inputbox" id="itemName"  v-model="itemName" placeholder="add a new Item" @keyup.enter="list_items.push(itemName)" onfocus="this.value=''"/> <button class="button button_webpage" id="addItemButton" type="button" @click="list_items.push(itemName)">Add item</button></p>
+        <p> New Item: <input class="inputbox" id="itemName"  v-model="itemName" placeholder="add a new Item" @keyup.enter="addItem(itemName)" onfocus="this.value=''"/> <button class="button button_webpage" id="addItemButton" type="button" @click="addItem(itemName)">Add item</button></p>
         
         <div class="buttons">
         <p><button class="button button_webpage"  type="button" @click="save_list">Submit</button> <button class="button button_webpage" type="button" @click="reset_inputfields">Reset</button></p>
@@ -28,6 +28,13 @@ export default {
         </div>
     `,
     methods: {
+        addItem(itemName) {
+            if (itemName !== '') {
+                this.list_items.push(itemName)
+                this.itemName = ''
+                document.getElementById('itemName').focus()
+            }
+        },
         reset_inputfields() {
             this.list_items = [],
                 this.itemName = '',

@@ -2,6 +2,8 @@ export default {
 
     data() {
         return {
+            edit: false,
+            items: [],
             shopping_lists: [],
             search: ''
         };
@@ -22,11 +24,7 @@ export default {
                 <button title="Check Item" class="slist_small_button" @click="check_item(list_item)"> ✔ </button> 
               </li>
             </ul>
-            <ul>
-              <li class="slist_items">
-                <button title="Add Item" class="slist_small_button" @click="add_item(shopping_list.list_id)">➕</button>
-              </li>
-            </ul>
+                <button title="Add Item" class="slist_small_button" @click="add_item(shopping_list.list_id)">+</button>
           </div>
         </li>
       </ul>

@@ -37,4 +37,5 @@ public class ShoppingListServiceTest {
         Assertions.assertSame(franccysList.size(), 1, "The number of shopping lists returned was wrong.");
         Assertions.assertSame(franccysList.get(0).getList_name(), "Monday's Food", "The wrong list was returned.");
     }
+    
 }

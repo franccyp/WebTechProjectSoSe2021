@@ -11,10 +11,10 @@ export default {
     <section class="one">
     <div class="contact-section">
         <div class="contact-info">
-            <div><i class="fas fa-map-marker-alt"></i>Genslerstraße 88, 10553 Berlin.</div>
+            <div><i class="fas fa-map-marker-alt"></i>Shoppingliststraße 88, 10553 Berlin.</div>
             <div><i class="fas fa-envelope"></i>shopchop@email.com</div>
-            <div><i class="fas fa-phone"></i>+49 30 290761833</div>
-            <div><i class="fas fa-clock"></i>Mon - Fri 0900 to 1500</div>
+            <div><i class="fas fa-phone"></i>+55 530 290761833</div>
+            <div><i class="fas fa-clock"></i>Mon - Fri 09:00 to 15:00</div>
         </div>
         <div class="contact-form">
             <h2>Contact Us</h2>
