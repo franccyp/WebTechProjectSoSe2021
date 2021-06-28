@@ -32,7 +32,6 @@ export default {
             if (itemName !== '') {
                 this.list_items.push(itemName)
                 this.itemName = ''
-                document.getElementById('itemName').focus()
             }
         },
         reset_inputfields() {
