@@ -2,8 +2,6 @@ export default {
 
     data() {
         return {
-            edit: false,
-            items: [],
             shopping_lists: [],
             search: ''
         };
@@ -90,24 +88,26 @@ export default {
                 inputAttributes: {
                     'aria-label': 'Add your item here'
                 },
-                showCancelButton: true
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Save'
             })
 
             if (text) {
                 Swal.fire(`${text} is now added into your list!`)
+                item_name = text;
+                shopList.listItems.push(item_name);
+                let url = '/shoppinglists/updatelist/' + list_id + '/' + item_name
+                axios.post(url, {
+                    itemName: item_name
+                }).then((updatedList) => {
+                    this.load_lists();
+                }, (error) => {
+                    Swal.fire('Unable to add item!');
+                    console.log('Unable to add item!');
+                });
             }
-
-            item_name = text;
-            shopList.listItems.push(item_name);
-            let url = '/shoppinglists/updatelist/' + list_id + '/' + item_name
-            axios.post(url, {
-                itemName: item_name
-            }).then((updatedList) => {
-                this.load_lists();
-            }, (error) => {
-                Swal.fire('Unable to add item!');
-                console.log('Unable to add item!');
-            });
         },
         delete_item(item) {
             let delete_url = '/item/remove/' + item.item_id
